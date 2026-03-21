@@ -1,0 +1,30 @@
+{
+  "name": "chai-tailwind",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "private": false,
+  "type": "module",
+  "keywords": [
+    "tailwind",
+    "css",
+    "engine",
+    "jit"
+  ],
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "author": "Saurabh Prajapati",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "pack": "npm pack"
+  },
+  "devDependencies": {
+    "vite": "^8.0.1"
+  }
+}

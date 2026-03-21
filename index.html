@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chai Tailwind — Demo</title>
+    <style>
+      /* Base reset so text is always visible on dark bg before JS injects chai styles */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        min-height: 100vh;
+        font-family: system-ui, sans-serif;
+        background: #0f172a;
+        color: #f8fafc;
+      }
+      h1,
+      h2,
+      h3,
+      p,
+      code,
+      strong,
+      span,
+      a {
+        color: inherit;
+      }
+      code {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body class="chai-bg-dark">
+    <div class="chai-flex-center chai-p-10">
+      <div class="chai-stack" style="width: 100%; max-width: 780px">
+        <!-- Header -->
+        <div class="chai-flex-center" style="flex-direction: column; gap: 8px">
+          <h1
+            class="chai-text-light chai-font-bold chai-text-32 chai-uppercase chai-fade-in"
+          >
+            Chai Tailwind
+          </h1>
+          <p class="chai-text-muted chai-text-16 chai-slide-up">
+            Classes parsed and injected at runtime — no build step needed.
+          </p>
+        </div>
+
+        <!-- Cards -->
+        <div
+          style="
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+          "
+        >
+          <div
+            class="chai-card chai-rounded-xl chai-shadow-soft chai-hover-lift chai-p-6"
+            style="flex: 1; min-width: 220px"
+          >
+            <h2 class="chai-font-bold chai-text-18" style="color: #0f172a">
+              Regular Card
+            </h2>
+            <p
+              class="chai-text-muted chai-text-14 chai-m-2"
+              style="color: #64748b"
+            >
+              Parsed from class attribute at runtime.
+            </p>
+          </div>
+
+          <div
+            class="chai-card-glass chai-rounded-xl chai-shadow-glow chai-hover-scale chai-p-6"
+            style="flex: 1; min-width: 220px"
+          >
+            <h2 class="chai-text-light chai-font-bold chai-text-18">
+              Glass Card
+            </h2>
+            <p class="chai-text-muted chai-text-14 chai-m-2">
+              Backdrop blur + glow shadow.
+            </p>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="chai-flex-center" style="gap: 16px">
+          <button class="chai-btn chai-glow-pulse">Glow Pulse</button>
+          <button class="chai-btn chai-bounce">Bouncing</button>
+        </div>
+
+        <!-- Dynamic class demo -->
+        <div
+          class="chai-border chai-rounded chai-p-4 chai-hover-lift"
+          style="border-color: #334155"
+        >
+          <p class="chai-text-light chai-text-14" style="line-height: 1.7">
+            Dynamic spacing &amp; typography generated at runtime:<br />
+            <code>chai-p-4</code> →
+            <strong style="color: #a5b4fc">16px padding</strong> &nbsp;|&nbsp;
+            <code>chai-text-14</code> →
+            <strong style="color: #a5b4fc">14px font-size</strong> &nbsp;|&nbsp;
+            <code>chai-m-2</code> →
+            <strong style="color: #a5b4fc">8px margin</strong>
+          </p>
+        </div>
+
+        <!-- Credits -->
+        <div
+          class="chai-card-glass chai-rounded-xl chai-p-6 chai-fade-in"
+          style="text-align: center"
+        >
+          <p
+            class="chai-text-muted chai-text-14"
+            style="
+              margin-bottom: 10px;
+              letter-spacing: 0.05em;
+              text-transform: uppercase;
+              font-size: 11px;
+            "
+          >
+            Built with love for
+          </p>
+          <p
+            class="chai-text-light chai-font-bold chai-text-18"
+            style="margin-bottom: 14px"
+          >
+            ChaiCode Community
+          </p>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 12px;
+              flex-wrap: wrap;
+            "
+          >
+            <span
+              style="
+                background: rgba(99, 102, 241, 0.2);
+                border: 1px solid rgba(99, 102, 241, 0.4);
+                border-radius: 999px;
+                padding: 4px 14px;
+                font-size: 13px;
+                color: #a5b4fc;
+              "
+            >
+              Hitesh Sir
+            </span>
+            <span
+              style="
+                background: rgba(99, 102, 241, 0.2);
+                border: 1px solid rgba(99, 102, 241, 0.4);
+                border-radius: 999px;
+                padding: 4px 14px;
+                font-size: 13px;
+                color: #a5b4fc;
+              "
+            >
+              Piyush Sir
+            </span>
+            <span
+              style="
+                background: rgba(99, 102, 241, 0.2);
+                border: 1px solid rgba(99, 102, 241, 0.4);
+                border-radius: 999px;
+                padding: 4px 14px;
+                font-size: 13px;
+                color: #a5b4fc;
+              "
+            >
+              Anirudh Sir
+            </span>
+          </div>
+          <p class="chai-text-muted" style="margin-top: 14px; font-size: 12px">
+            Thank you for inspiring the chai-code way of learning
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/index.js"></script>
+  </body>
+</html>
