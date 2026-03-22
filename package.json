@@ -1,20 +1,31 @@
 {
-  "name": "chai-tailwind",
+  "name": "chai-choco-tailwind",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "description": "A chocolate-themed runtime CSS utility engine. Drop in a script tag — no build step needed.",
   "private": false,
   "type": "module",
-  "keywords": [
-    "tailwind",
-    "css",
-    "engine",
-    "jit"
-  ],
+  "main": "./dist/chai-choco-tailwind.umd.js",
+  "module": "./dist/chai-choco-tailwind.esm.js",
   "exports": {
-    ".": "./src/index.js"
+    ".": {
+      "import": "./dist/chai-choco-tailwind.esm.js",
+      "require": "./dist/chai-choco-tailwind.umd.js"
+    }
   },
   "files": [
+    "dist",
     "src"
+  ],
+  "keywords": [
+    "css",
+    "tailwind",
+    "utility",
+    "runtime",
+    "chocolate",
+    "theme",
+    "jit",
+    "no-build",
+    "choco"
   ],
   "author": "Saurabh Prajapati",
   "license": "MIT",

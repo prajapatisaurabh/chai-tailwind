@@ -3,188 +3,1048 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chai Tailwind — Demo</title>
+    <title>chai-choco-tailwind — Docs &amp; Demo</title>
     <style>
-      /* Base reset so text is always visible on dark bg before JS injects chai styles */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
       body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: #1a0a00;
+        color: #FFF8F0;
         min-height: 100vh;
-        font-family: system-ui, sans-serif;
-        background: #0f172a;
-        color: #f8fafc;
+        line-height: 1.6;
       }
-      h1,
-      h2,
-      h3,
-      p,
-      code,
-      strong,
-      span,
-      a {
-        color: inherit;
-      }
+      a { color: inherit; }
+
+      /* ── Section layout ── */
+      .section { padding: 72px 24px; max-width: 1100px; margin: 0 auto; }
+      .section-title { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #A0785A; margin-bottom: 8px; }
+      .section-heading { font-size: 30px; font-weight: 700; color: #FFF8F0; margin-bottom: 10px; }
+      .section-sub { font-size: 15px; color: #A0785A; margin-bottom: 40px; max-width: 560px; line-height: 1.65; }
+      .divider { border: none; border-top: 1px solid #3D1F10; }
+
+      /* ── Inline code ── */
       code {
-        background: rgba(255, 255, 255, 0.08);
-        padding: 2px 6px;
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        font-size: 0.82em;
+        background: #2C1810;
+        border: 1px solid #3D1F10;
+        padding: 2px 7px;
+        border-radius: 5px;
+        color: #D4924A;
+        word-break: break-all;
+      }
+
+      /* ── Demo box ── */
+      .demo-box { background: #2C1810; border: 1px solid #3D1F10; border-radius: 10px; padding: 20px; margin-bottom: 12px; }
+      .demo-label { font-size: 11px; color: #A0785A; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; font-weight: 600; }
+
+      /* ── Color swatches ── */
+      .swatch-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+      .swatch { width: 88px; border-radius: 10px; overflow: hidden; cursor: default; transition: transform 0.2s ease; border: 1px solid rgba(255,255,255,0.06); }
+      .swatch:hover { transform: scale(1.07) translateY(-3px); }
+      .swatch-color { height: 56px; }
+      .swatch-info { padding: 7px 9px; background: #2C1810; }
+      .swatch-hex { font-size: 10px; font-family: monospace; color: #C68642; font-weight: 600; }
+      .swatch-name { font-size: 9px; color: #A0785A; margin-top: 2px; }
+
+      /* ── Spacing bars ── */
+      .spacing-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+      .spacing-label { font-size: 11px; color: #A0785A; min-width: 110px; max-width: 140px; font-family: monospace; flex-shrink: 0; }
+      .spacing-bar-track { flex: 1; min-width: 80px; background: #1a0a00; border-radius: 4px; height: 20px; overflow: hidden; border: 1px solid #3D1F10; }
+      .spacing-bar { height: 100%; background: linear-gradient(90deg, #4A2515, #C68642); border-radius: 4px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
+      .spacing-val { font-size: 11px; color: #FFF8F0; font-weight: 600; }
+
+      /* ── Nav ── */
+      nav {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+        background: rgba(26,10,0,0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid #3D1F10;
+        padding: 0 20px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand { font-weight: 700; font-size: 15px; color: #C68642; letter-spacing: -0.02em; text-decoration: none; }
+      .nav-links { display: flex; gap: 20px; }
+      .nav-links a { font-size: 13px; color: #A0785A; text-decoration: none; transition: color 0.2s; white-space: nowrap; }
+      .nav-links a:hover { color: #C68642; }
+      /* Hamburger */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 6px;
+        border: none;
+        background: none;
+      }
+      .hamburger span { display: block; width: 22px; height: 2px; background: #C68642; border-radius: 2px; transition: all 0.3s ease; }
+      /* Mobile menu */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 56px; left: 0; right: 0;
+        background: rgba(26,10,0,0.97);
+        border-bottom: 1px solid #3D1F10;
+        z-index: 199;
+        padding: 16px 20px 20px;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a { font-size: 15px; color: #A0785A; text-decoration: none; padding: 10px 0; border-bottom: 1px solid #2C1810; transition: color 0.2s; }
+      .mobile-menu a:hover { color: #C68642; }
+      .mobile-menu a:last-child { border-bottom: none; }
+
+      /* ── Terminal ── */
+      .terminal { background: #0d0500; border: 1px solid #3D1F10; border-radius: 12px; overflow: hidden; }
+      .terminal-bar {
+        background: #2C1810; padding: 10px 14px;
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 8px; border-bottom: 1px solid #3D1F10;
+      }
+      .terminal-dots { display: flex; gap: 6px; flex-shrink: 0; }
+      .terminal-dot { width: 11px; height: 11px; border-radius: 50%; }
+      .terminal-code {
+        padding: 18px 20px;
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        font-size: 13px;
+        line-height: 1.8;
+        color: #F5E6D3;
+        white-space: pre;
+        overflow-x: auto;
+      }
+      .t-caramel { color: #D4924A; }
+      .t-muted   { color: #A0785A; }
+      .t-green   { color: #7ec8a4; }
+      .t-cream   { color: #FFF8F0; }
+
+      /* ── Copy button ── */
+      .copy-btn {
+        background: #3D1F10;
+        border: 1px solid #4A2515;
+        color: #C68642;
+        border-radius: 7px;
+        padding: 4px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .copy-btn:hover { background: #4A2515; }
+      .copy-btn.copied { color: #7ec8a4; border-color: #7ec8a4; }
+
+      /* ── Animation tiles ── */
+      .anim-tile { background: #2C1810; border: 1px solid #4A2515; border-radius: 12px; padding: 18px 14px; text-align: center; min-width: 100px; }
+      .anim-icon { font-size: 22px; margin-bottom: 8px; }
+      .anim-name { font-size: 11px; color: #A0785A; font-family: monospace; }
+
+      /* ── Interaction demo boxes ── */
+      .interaction-box {
+        background: #2C1810; border: 1px solid #4A2515; border-radius: 12px;
+        padding: 18px 16px; text-align: center; font-size: 12px;
+        color: #A0785A; font-family: monospace; cursor: default;
+        flex: 1; min-width: 120px;
+      }
+
+      /* ── Hero gradient text ── */
+      .gradient-text {
+        background: linear-gradient(135deg, #C68642, #FFF8F0, #D4924A);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* ── Toast ── */
+      #toast {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: #2C1810;
+        border: 1px solid #C68642;
+        color: #FFF8F0;
+        padding: 10px 22px;
+        border-radius: 10px;
+        font-size: 14px;
+        z-index: 9999;
+        pointer-events: none;
+        box-shadow: 0 4px 20px rgba(198,134,66,0.3);
+        opacity: 0;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+      #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+      /* ── Coming soon section ── */
+      .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+      .roadmap-card {
+        background: #2C1810;
+        border: 1px solid #3D1F10;
+        border-radius: 14px;
+        padding: 20px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .roadmap-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4A2515, #C68642, #4A2515);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .roadmap-card:hover { transform: translateY(-4px); border-color: #4A2515; }
+      .roadmap-card:hover::before { opacity: 1; }
+      .roadmap-icon { font-size: 24px; margin-bottom: 10px; }
+      .roadmap-title { font-size: 15px; font-weight: 600; color: #F5E6D3; margin-bottom: 6px; }
+      .roadmap-desc { font-size: 13px; color: #A0785A; line-height: 1.55; }
+      .roadmap-tag {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 2px 8px;
         border-radius: 4px;
-        font-size: 0.9em;
+        background: rgba(198,134,66,0.15);
+        color: #C68642;
+        border: 1px solid rgba(198,134,66,0.25);
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        .section { padding: 48px 16px; }
+        .section-heading { font-size: 24px; }
+        .section-sub { font-size: 14px; margin-bottom: 28px; }
+        .nav-links { display: none; }
+        .hamburger { display: flex; }
+        .spacing-section-grid { grid-template-columns: 1fr !important; }
+        .spacing-label { min-width: 90px; font-size: 10px; }
+        .terminal-code { font-size: 11px; padding: 14px 14px; }
+        .swatch { width: 76px; }
+        .swatch-color { height: 48px; }
+        .interaction-box { min-width: 100px; }
+        .anim-tile { min-width: 88px; padding: 14px 10px; }
+      }
+      @media (max-width: 480px) {
+        .section { padding: 40px 14px; }
+        .section-heading { font-size: 20px; }
+        .demo-box { padding: 14px; }
+        .terminal-code { font-size: 10px; padding: 12px; }
+        .swatch { width: 68px; }
+        .swatch-color { height: 44px; }
+        .swatch-hex { font-size: 9px; }
+        .swatch-name { font-size: 8px; }
+        .spacing-label { min-width: 80px; }
       }
     </style>
   </head>
-  <body class="chai-bg-dark">
-    <div class="chai-flex-center chai-p-10">
-      <div class="chai-stack" style="width: 100%; max-width: 780px">
-        <!-- Header -->
-        <div class="chai-flex-center" style="flex-direction: column; gap: 8px">
-          <h1
-            class="chai-text-light chai-font-bold chai-text-32 chai-uppercase chai-fade-in"
-          >
-            Chai Tailwind
-          </h1>
-          <p class="chai-text-muted chai-text-16 chai-slide-up">
-            Classes parsed and injected at runtime — no build step needed.
-          </p>
-        </div>
+  <body>
 
-        <!-- Cards -->
-        <div
-          style="
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-          "
-        >
-          <div
-            class="chai-card chai-rounded-xl chai-shadow-soft chai-hover-lift chai-p-6"
-            style="flex: 1; min-width: 220px"
-          >
-            <h2 class="chai-font-bold chai-text-18" style="color: #0f172a">
-              Regular Card
-            </h2>
-            <p
-              class="chai-text-muted chai-text-14 chai-m-2"
-              style="color: #64748b"
-            >
-              Parsed from class attribute at runtime.
-            </p>
-          </div>
+    <!-- ── TOAST ──────────────────────────────────────────────────────────────── -->
+    <div id="toast"></div>
 
-          <div
-            class="chai-card-glass chai-rounded-xl chai-shadow-glow chai-hover-scale chai-p-6"
-            style="flex: 1; min-width: 220px"
-          >
-            <h2 class="chai-text-light chai-font-bold chai-text-18">
-              Glass Card
-            </h2>
-            <p class="chai-text-muted chai-text-14 chai-m-2">
-              Backdrop blur + glow shadow.
-            </p>
-          </div>
-        </div>
-
-        <!-- Buttons -->
-        <div class="chai-flex-center" style="gap: 16px">
-          <button class="chai-btn chai-glow-pulse">Glow Pulse</button>
-          <button class="chai-btn chai-bounce">Bouncing</button>
-        </div>
-
-        <!-- Dynamic class demo -->
-        <div
-          class="chai-border chai-rounded chai-p-4 chai-hover-lift"
-          style="border-color: #334155"
-        >
-          <p class="chai-text-light chai-text-14" style="line-height: 1.7">
-            Dynamic spacing &amp; typography generated at runtime:<br />
-            <code>chai-p-4</code> →
-            <strong style="color: #a5b4fc">16px padding</strong> &nbsp;|&nbsp;
-            <code>chai-text-14</code> →
-            <strong style="color: #a5b4fc">14px font-size</strong> &nbsp;|&nbsp;
-            <code>chai-m-2</code> →
-            <strong style="color: #a5b4fc">8px margin</strong>
-          </p>
-        </div>
-
-        <!-- Credits -->
-        <div
-          class="chai-card-glass chai-rounded-xl chai-p-6 chai-fade-in"
-          style="text-align: center"
-        >
-          <p
-            class="chai-text-muted chai-text-14"
-            style="
-              margin-bottom: 10px;
-              letter-spacing: 0.05em;
-              text-transform: uppercase;
-              font-size: 11px;
-            "
-          >
-            Built with love for
-          </p>
-          <p
-            class="chai-text-light chai-font-bold chai-text-18"
-            style="margin-bottom: 14px"
-          >
-            ChaiCode Community
-          </p>
-          <div
-            style="
-              display: flex;
-              justify-content: center;
-              gap: 12px;
-              flex-wrap: wrap;
-            "
-          >
-            <span
-              style="
-                background: rgba(99, 102, 241, 0.2);
-                border: 1px solid rgba(99, 102, 241, 0.4);
-                border-radius: 999px;
-                padding: 4px 14px;
-                font-size: 13px;
-                color: #a5b4fc;
-              "
-            >
-              Hitesh Sir
-            </span>
-            <span
-              style="
-                background: rgba(99, 102, 241, 0.2);
-                border: 1px solid rgba(99, 102, 241, 0.4);
-                border-radius: 999px;
-                padding: 4px 14px;
-                font-size: 13px;
-                color: #a5b4fc;
-              "
-            >
-              Piyush Sir
-            </span>
-            <span
-              style="
-                background: rgba(99, 102, 241, 0.2);
-                border: 1px solid rgba(99, 102, 241, 0.4);
-                border-radius: 999px;
-                padding: 4px 14px;
-                font-size: 13px;
-                color: #a5b4fc;
-              "
-            >
-              Anirudh Sir
-            </span>
-          </div>
-          <p class="chai-text-muted" style="margin-top: 14px; font-size: 12px">
-            Thank you for inspiring the chai-code way of learning
-          </p>
-        </div>
+    <!-- ── NAV ──────────────────────────────────────────────────────────────── -->
+    <nav>
+      <a href="#" class="brand">🍫 chai-choco-tailwind</a>
+      <div class="nav-links">
+        <a href="#install">Install</a>
+        <a href="#colors">Colors</a>
+        <a href="#components">Components</a>
+        <a href="#animations">Animations</a>
+        <a href="#usage">Usage</a>
+        <a href="#coming-soon">Roadmap</a>
       </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- ── MOBILE MENU ──────────────────────────────────────────────────────── -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#install"      onclick="closeMobileMenu()">Install</a>
+      <a href="#colors"       onclick="closeMobileMenu()">Colors</a>
+      <a href="#components"   onclick="closeMobileMenu()">Components</a>
+      <a href="#animations"   onclick="closeMobileMenu()">Animations</a>
+      <a href="#usage"        onclick="closeMobileMenu()">Usage</a>
+      <a href="#coming-soon"  onclick="closeMobileMenu()">Roadmap</a>
     </div>
 
+    <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+    <section style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 80px 20px 60px;">
+      <div style="text-align: center; max-width: 680px; width: 100%;" class="chai-choco-stack chai-choco-fade-in">
+        <div>
+          <span class="chai-choco-badge-caramel chai-choco-uppercase chai-choco-tracking-wider" style="font-size: 10px;">v1.0.0 · Runtime CSS Engine</span>
+        </div>
+        <h1 style="font-size: clamp(32px, 8vw, 72px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;" class="chai-choco-font-bold">
+          <span class="gradient-text">chai-choco</span><br>
+          <span class="chai-choco-text-cream">tailwind</span>
+        </h1>
+        <p style="font-size: clamp(15px, 2vw, 18px); max-width: 460px; margin: 0 auto;" class="chai-choco-text-muted chai-choco-leading-relaxed">
+          A chocolate-themed runtime CSS utility engine. Drop in one script tag.<br>No build step, no config — just rich, warm styles.
+        </p>
+        <div class="chai-choco-flex-center" style="gap: 12px; flex-wrap: wrap;">
+          <a href="#install" class="chai-choco-btn">Get Started</a>
+          <a href="#usage" class="chai-choco-btn-outline">View Example</a>
+        </div>
+        <div class="chai-choco-flex-center" style="gap: 8px; flex-wrap: wrap;">
+          <span class="chai-choco-chip">Zero build step</span>
+          <span class="chai-choco-chip">No config file</span>
+          <span class="chai-choco-chip">~4KB gzipped</span>
+          <span class="chai-choco-chip">ESM + UMD</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── INSTALL ───────────────────────────────────────────────────────────── -->
+    <section id="install" class="section">
+      <p class="section-title">Get Started</p>
+      <h2 class="section-heading">Installation</h2>
+      <p class="section-sub">Two ways to add chai-choco-tailwind to your project.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 48px;">
+
+        <!-- npm card -->
+        <div class="chai-choco-card">
+          <p class="demo-label">npm / yarn</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dots">
+                <div class="terminal-dot" style="background:#c0392b;"></div>
+                <div class="terminal-dot" style="background:#e67e22;"></div>
+                <div class="terminal-dot" style="background:#2ecc71;"></div>
+              </div>
+              <button class="copy-btn" onclick="copyText('npm install chai-choco-tailwind', this)">Copy</button>
+            </div>
+            <div class="terminal-code"><span class="t-muted">$</span> <span class="t-caramel">npm</span> install chai-choco-tailwind</div>
+          </div>
+
+          <p style="font-size:13px; margin-top:16px; margin-bottom:8px;" class="chai-choco-text-muted">Then import in your entry file:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dots">
+                <div class="terminal-dot" style="background:#c0392b;"></div>
+                <div class="terminal-dot" style="background:#e67e22;"></div>
+                <div class="terminal-dot" style="background:#2ecc71;"></div>
+              </div>
+              <button class="copy-btn" onclick="copyText(&quot;import 'chai-choco-tailwind'&quot;, this)">Copy</button>
+            </div>
+            <div class="terminal-code"><span class="t-muted">import</span> <span class="t-caramel">'chai-choco-tailwind'</span></div>
+          </div>
+        </div>
+
+        <!-- CDN card -->
+        <div class="chai-choco-card">
+          <p class="demo-label">CDN / Script Tag (plain HTML)</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dots">
+                <div class="terminal-dot" style="background:#c0392b;"></div>
+                <div class="terminal-dot" style="background:#e67e22;"></div>
+                <div class="terminal-dot" style="background:#2ecc71;"></div>
+              </div>
+              <button class="copy-btn" onclick="copyText('<script type=&quot;module&quot; src=&quot;https://unpkg.com/chai-choco-tailwind/dist/chai-choco-tailwind.esm.js&quot;><\/script>', this)">Copy</button>
+            </div>
+            <div class="terminal-code" style="font-size:11px;"><span class="t-muted">&lt;script</span> <span class="t-green">type</span>=<span class="t-caramel">"module"</span>
+  <span class="t-green">src</span>=<span class="t-caramel">"https://unpkg.com/chai-choco-tailwind
+  /dist/chai-choco-tailwind.esm.js"</span>
+<span class="t-muted">&gt;&lt;/script&gt;</span></div>
+          </div>
+          <p style="font-size:13px; margin-top:14px;" class="chai-choco-text-muted">Works in any plain HTML file — no bundler needed.</p>
+        </div>
+
+      </div>
+
+      <!-- How it works -->
+      <p class="section-title" style="margin-bottom: 20px;">How it works</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+        <div class="chai-choco-card-glass" style="text-align:center;">
+          <div style="font-size: 28px; margin-bottom: 10px;">🔍</div>
+          <h3 class="chai-choco-font-semibold" style="font-size:15px; margin-bottom:6px;">1. Scan</h3>
+          <p class="chai-choco-text-muted" style="font-size:13px;">Engine reads all <code>class="…"</code> attributes from the DOM at runtime.</p>
+        </div>
+        <div class="chai-choco-card-glass" style="text-align:center;">
+          <div style="font-size: 28px; margin-bottom: 10px;">⚙️</div>
+          <h3 class="chai-choco-font-semibold" style="font-size:15px; margin-bottom:6px;">2. Generate</h3>
+          <p class="chai-choco-text-muted" style="font-size:13px;">Matches class names against the chocolate utility map and builds a CSS string.</p>
+        </div>
+        <div class="chai-choco-card-glass" style="text-align:center;">
+          <div style="font-size: 28px; margin-bottom: 10px;">💉</div>
+          <h3 class="chai-choco-font-semibold" style="font-size:15px; margin-bottom:6px;">3. Inject</h3>
+          <p class="chai-choco-text-muted" style="font-size:13px;">A single <code>&lt;style&gt;</code> tag is added to <code>&lt;head&gt;</code> — only what you use.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── COLOR PALETTE ─────────────────────────────────────────────────────── -->
+    <section id="colors" class="section">
+      <p class="section-title">Design Tokens</p>
+      <h2 class="section-heading">Chocolate Palette</h2>
+      <p class="section-sub">12 carefully tuned tones — from void-dark cocoa to warm latte cream.</p>
+
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#1a0a00;"></div><div class="swatch-info"><div class="swatch-hex">#1a0a00</div><div class="swatch-name">bg-void</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#2C1810;"></div><div class="swatch-info"><div class="swatch-hex">#2C1810</div><div class="swatch-name">bg-darkest</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#3D1F10;"></div><div class="swatch-info"><div class="swatch-hex">#3D1F10</div><div class="swatch-name">bg-dark</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#4A2515;"></div><div class="swatch-info"><div class="swatch-hex">#4A2515</div><div class="swatch-name">bg-rich</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#7B4A2D;"></div><div class="swatch-info"><div class="swatch-hex">#7B4A2D</div><div class="swatch-name">bg-mid</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#8B5E3C;"></div><div class="swatch-info"><div class="swatch-hex">#8B5E3C</div><div class="swatch-name">bg-milk</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#C68642;"></div><div class="swatch-info"><div class="swatch-hex">#C68642</div><div class="swatch-name">bg-caramel</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#D4924A;"></div><div class="swatch-info"><div class="swatch-hex">#D4924A</div><div class="swatch-name">bg-gold</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#E8D5B7;"></div><div class="swatch-info"><div class="swatch-hex">#E8D5B7</div><div class="swatch-name">bg-cream</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F5E6D3;"></div><div class="swatch-info"><div class="swatch-hex">#F5E6D3</div><div class="swatch-name">bg-latte</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#FFF8F0; border:1px solid #E8D5B7;"></div><div class="swatch-info"><div class="swatch-hex">#FFF8F0</div><div class="swatch-name">text-light</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#A0785A;"></div><div class="swatch-info"><div class="swatch-hex">#A0785A</div><div class="swatch-name">text-muted</div></div></div>
+      </div>
+
+      <p class="demo-label">Gradients</p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <div style="flex:1; min-width:160px; height:64px; border-radius:12px; background:linear-gradient(135deg,#2C1810,#7B4A2D); display:flex; align-items:center; justify-content:center;">
+          <code style="font-size:11px;">bg-gradient</code>
+        </div>
+        <div style="flex:1; min-width:160px; height:64px; border-radius:12px; background:linear-gradient(135deg,#4A2515,#C68642); display:flex; align-items:center; justify-content:center;">
+          <code style="font-size:11px;">bg-gradient-warm</code>
+        </div>
+        <div style="flex:1; min-width:160px; height:64px; border-radius:12px; background:linear-gradient(135deg,#7B4A2D,#D4924A); display:flex; align-items:center; justify-content:center;">
+          <code style="font-size:11px;">bg-gradient-gold</code>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── TYPOGRAPHY ────────────────────────────────────────────────────────── -->
+    <section class="section">
+      <p class="section-title">Typography</p>
+      <h2 class="section-heading">Type Scale</h2>
+      <p class="section-sub">Font weights, transforms, letter-spacing, and dynamic sizes.</p>
+
+      <div class="demo-box chai-choco-stack">
+        <div>
+          <p style="font-size:clamp(20px,5vw,36px);" class="chai-choco-font-bold chai-choco-text-light">The richest dark chocolate</p>
+          <code>chai-choco-font-bold · chai-choco-text-36</code>
+        </div>
+        <div>
+          <p style="font-size:clamp(16px,3vw,24px);" class="chai-choco-font-semibold chai-choco-text-caramel">A hint of caramel warmth</p>
+          <code>chai-choco-font-semibold · chai-choco-text-caramel</code>
+        </div>
+        <div>
+          <p style="font-size:16px;" class="chai-choco-font-medium chai-choco-text-cream">Smooth milk chocolate blends</p>
+          <code>chai-choco-font-medium · chai-choco-text-cream</code>
+        </div>
+        <div>
+          <p style="font-size:14px;" class="chai-choco-font-light chai-choco-text-muted chai-choco-leading-relaxed">A delicate note of vanilla cream drifts through every sip of this perfectly balanced blend.</p>
+          <code>chai-choco-font-light · chai-choco-leading-relaxed · chai-choco-text-muted</code>
+        </div>
+        <div>
+          <p style="font-size:12px;" class="chai-choco-uppercase chai-choco-tracking-wider chai-choco-text-gold">Premium Reserve · Single Origin</p>
+          <code>chai-choco-uppercase · chai-choco-tracking-wider · chai-choco-text-gold</code>
+        </div>
+        <div>
+          <p class="chai-choco-italic chai-choco-text-muted" style="font-size:15px;">"Every bar tells a story of the bean."</p>
+          <code>chai-choco-italic · chai-choco-text-muted</code>
+        </div>
+      </div>
+
+      <p class="demo-label" style="margin-top: 28px;">Dynamic — <code>chai-choco-text-{n}</code> → font-size: npx</p>
+      <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:baseline; margin-top:12px;">
+        <span class="chai-choco-text-12 chai-choco-text-muted">12px</span>
+        <span class="chai-choco-text-14 chai-choco-text-cream">14px</span>
+        <span class="chai-choco-text-16 chai-choco-text-light">16px</span>
+        <span class="chai-choco-text-20 chai-choco-text-caramel chai-choco-font-semibold">20px</span>
+        <span class="chai-choco-text-28 chai-choco-text-gold chai-choco-font-bold">28px</span>
+        <span class="chai-choco-text-36 chai-choco-font-bold" style="color:#FFF8F0;">36px</span>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── CARDS ─────────────────────────────────────────────────────────────── -->
+    <section id="components" class="section">
+      <p class="section-title">Components</p>
+      <h2 class="section-heading">Cards</h2>
+      <p class="section-sub">Three card variants — dark chocolate, cream latte, and glassmorphism.</p>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:18px; margin-bottom:16px;">
+
+        <div class="chai-choco-card chai-choco-stack">
+          <div class="chai-choco-flex-between">
+            <span class="chai-choco-badge">New</span>
+            <span class="chai-choco-text-muted" style="font-size:11px;">Dark Choco</span>
+          </div>
+          <div>
+            <h3 class="chai-choco-font-bold" style="font-size:17px; margin-bottom:6px;">Dark Chocolate</h3>
+            <p class="chai-choco-text-muted" style="font-size:13px; line-height:1.6;">Rich, intense cocoa with a smooth finish.</p>
+          </div>
+          <div>
+            <button class="chai-choco-btn chai-choco-btn-sm" onclick="demoClick(this, 'chai-choco-card + chai-choco-btn')">Try it</button>
+          </div>
+        </div>
+
+        <div class="chai-choco-card-cream chai-choco-stack">
+          <div class="chai-choco-flex-between">
+            <span class="chai-choco-badge-dark">Bestseller</span>
+            <span style="font-size:11px; color:#A0785A;">Cream Latte</span>
+          </div>
+          <div>
+            <h3 style="font-size:17px; font-weight:700; margin-bottom:6px; color:#2C1810;">Milk Chocolate</h3>
+            <p style="font-size:13px; line-height:1.6; color:#7B4A2D;">Smooth, creamy, and sweet. A classic blend.</p>
+          </div>
+          <div>
+            <button class="chai-choco-btn-outline chai-choco-btn-sm" onclick="demoClick(this, 'chai-choco-card-cream + chai-choco-btn-outline')">Try it</button>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #4A2515, #7B4A2D); border-radius: 16px; padding: 3px;">
+          <div class="chai-choco-card-glass chai-choco-stack" style="border-radius:13px;">
+            <div class="chai-choco-flex-between">
+              <span class="chai-choco-badge-caramel">Limited</span>
+              <span class="chai-choco-text-muted" style="font-size:11px;">Glass</span>
+            </div>
+            <div>
+              <h3 class="chai-choco-font-bold" style="font-size:17px; margin-bottom:6px;">Caramel Fusion</h3>
+              <p class="chai-choco-text-muted" style="font-size:13px; line-height:1.6;">Dark chocolate meets golden caramel.</p>
+            </div>
+            <div>
+              <button class="chai-choco-btn-ghost chai-choco-btn-sm" onclick="demoClick(this, 'chai-choco-card-glass + chai-choco-btn-ghost')">Try it</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <code style="font-size:11px; display:block; margin-top:8px;">chai-choco-card · chai-choco-card-cream · chai-choco-card-glass</code>
+    </section>
+
+    <!-- ── BUTTONS ───────────────────────────────────────────────────────────── -->
+    <section class="section" style="padding-top: 0;">
+      <p class="section-title">Components</p>
+      <h2 class="section-heading">Buttons</h2>
+      <p class="section-sub">Three variants, two size modifiers, and animated states.</p>
+
+      <p class="demo-label">Variants</p>
+      <div class="demo-box" style="display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:20px;">
+        <div style="text-align:center;">
+          <button class="chai-choco-btn" onclick="demoClick(this, 'chai-choco-btn')">Primary</button>
+          <p style="font-size:10px; margin-top:8px;" class="chai-choco-text-muted">chai-choco-btn</p>
+        </div>
+        <div style="text-align:center;">
+          <button class="chai-choco-btn-outline" onclick="demoClick(this, 'chai-choco-btn-outline')">Outline</button>
+          <p style="font-size:10px; margin-top:8px;" class="chai-choco-text-muted">chai-choco-btn-outline</p>
+        </div>
+        <div style="text-align:center;">
+          <button class="chai-choco-btn-ghost" onclick="demoClick(this, 'chai-choco-btn-ghost')">Ghost</button>
+          <p style="font-size:10px; margin-top:8px;" class="chai-choco-text-muted">chai-choco-btn-ghost</p>
+        </div>
+      </div>
+
+      <p class="demo-label">Sizes</p>
+      <div class="demo-box" style="display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:20px;">
+        <div style="text-align:center;">
+          <button class="chai-choco-btn chai-choco-btn-sm" onclick="demoClick(this, 'chai-choco-btn-sm')">Small</button>
+          <p style="font-size:10px; margin-top:8px;" class="chai-choco-text-muted">chai-choco-btn-sm</p>
+        </div>
+        <div style="text-align:center;">
+          <button class="chai-choco-btn" onclick="demoClick(this, 'chai-choco-btn')">Default</button>
+          <p style="font-size:10px; margin-top:8px;" class="chai-choco-text-muted">default</p>
+        </div>
+        <div style="text-align:center;">
+          <button class="chai-choco-btn chai-choco-btn-lg" onclick="demoClick(this, 'chai-choco-btn-lg')">Large</button>
+          <p style="font-size:10px; margin-top:8px;" class="chai-choco-text-muted">chai-choco-btn-lg</p>
+        </div>
+      </div>
+
+      <p class="demo-label">Animated</p>
+      <div class="demo-box" style="display:flex; flex-wrap:wrap; gap:14px; align-items:center;">
+        <div style="text-align:center;">
+          <button class="chai-choco-btn chai-choco-glow-pulse" onclick="demoClick(this, 'chai-choco-glow-pulse')">Glow Pulse</button>
+          <p style="font-size:10px; margin-top:8px;" class="chai-choco-text-muted">glow-pulse</p>
+        </div>
+        <div style="text-align:center;">
+          <button class="chai-choco-btn chai-choco-shimmer" onclick="demoClick(this, 'chai-choco-shimmer')">Shimmer</button>
+          <p style="font-size:10px; margin-top:8px;" class="chai-choco-text-muted">shimmer</p>
+        </div>
+        <div style="text-align:center;">
+          <button class="chai-choco-btn chai-choco-bounce" onclick="demoClick(this, 'chai-choco-bounce')">Bounce</button>
+          <p style="font-size:10px; margin-top:8px;" class="chai-choco-text-muted">bounce</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── BADGES ────────────────────────────────────────────────────────────── -->
+    <section class="section" style="padding-top: 56px;">
+      <p class="section-title">Components</p>
+      <h2 class="section-heading">Badges</h2>
+      <p class="section-sub">Four badge variants for status, labels, and tags.</p>
+
+      <div class="demo-box" style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:12px;">
+        <span class="chai-choco-badge">Default</span>
+        <span class="chai-choco-badge-caramel">Caramel</span>
+        <span class="chai-choco-badge-cream">Cream</span>
+        <span class="chai-choco-badge-dark">Dark</span>
+        <span class="chai-choco-chip">chip tag</span>
+      </div>
+      <code style="font-size:11px;">chai-choco-badge · badge-caramel · badge-cream · badge-dark · chai-choco-chip</code>
+    </section>
+
+    <!-- ── INPUTS ────────────────────────────────────────────────────────────── -->
+    <section class="section" style="padding-top: 0;">
+      <p class="section-title">Components</p>
+      <h2 class="section-heading">Inputs</h2>
+      <p class="section-sub">Dark and cream input variants with caramel focus rings.</p>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:18px;">
+        <div>
+          <p class="demo-label">Dark input</p>
+          <div class="demo-box">
+            <label class="chai-choco-label">Your flavour</label>
+            <input class="chai-choco-input" type="text" placeholder="e.g. Dark Truffle…">
+            <p style="font-size:12px; margin-top:10px;" class="chai-choco-text-muted">Click to see caramel focus ring →</p>
+          </div>
+        </div>
+        <div>
+          <p class="demo-label">Cream input</p>
+          <div style="background:#F5E6D3; border-radius:12px; padding:18px;">
+            <label class="chai-choco-label" style="color:#7B4A2D;">Your flavour</label>
+            <input class="chai-choco-input-cream" type="text" placeholder="e.g. Milk Caramel…">
+            <p style="font-size:12px; margin-top:10px; color:#7B4A2D;">Click to see caramel focus ring →</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── SHADOWS ───────────────────────────────────────────────────────────── -->
+    <section class="section">
+      <p class="section-title">Visual Effects</p>
+      <h2 class="section-heading">Shadows</h2>
+      <p class="section-sub">Five shadow depths — from whisper-soft to full caramel glow.</p>
+
+      <div style="display:flex; flex-wrap:wrap; gap:16px;">
+        <div style="flex:1; min-width:120px; background:#2C1810; border-radius:12px; padding:18px; text-align:center; box-shadow:0 4px 16px rgba(44,24,16,0.25);"><p style="font-size:11px;" class="chai-choco-text-muted">shadow-soft</p></div>
+        <div style="flex:1; min-width:120px; background:#2C1810; border-radius:12px; padding:18px; text-align:center; box-shadow:0 8px 28px rgba(44,24,16,0.35);"><p style="font-size:11px;" class="chai-choco-text-muted">shadow-md</p></div>
+        <div style="flex:1; min-width:120px; background:#2C1810; border-radius:12px; padding:18px; text-align:center; box-shadow:0 12px 40px rgba(26,10,0,0.55);"><p style="font-size:11px;" class="chai-choco-text-muted">shadow-hard</p></div>
+        <div style="flex:1; min-width:120px; background:#2C1810; border-radius:12px; padding:18px; text-align:center; box-shadow:0 0 24px rgba(198,134,66,0.45);"><p style="font-size:11px;" class="chai-choco-text-caramel">shadow-caramel</p></div>
+        <div style="flex:1; min-width:120px; background:#2C1810; border-radius:12px; padding:18px; text-align:center; box-shadow:0 0 32px rgba(212,146,74,0.65);"><p style="font-size:11px;" class="chai-choco-text-gold">shadow-glow</p></div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── SPACING ───────────────────────────────────────────────────────────── -->
+    <section class="section">
+      <p class="section-title">Spacing</p>
+      <h2 class="section-heading">Dynamic Spacing</h2>
+      <p class="section-sub"><code>chai-choco-p-{n}</code> and <code>chai-choco-m-{n}</code> → n × 4px.</p>
+
+      <div class="spacing-section-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div>
+          <p class="demo-label" style="margin-bottom:14px;">Padding scale</p>
+          <div class="chai-choco-stack">
+            <div class="spacing-row"><span class="spacing-label">chai-choco-p-1</span><div class="spacing-bar-track"><div class="spacing-bar" style="width:10%;"><span class="spacing-val">4px</span></div></div></div>
+            <div class="spacing-row"><span class="spacing-label">chai-choco-p-2</span><div class="spacing-bar-track"><div class="spacing-bar" style="width:20%;"><span class="spacing-val">8px</span></div></div></div>
+            <div class="spacing-row"><span class="spacing-label">chai-choco-p-4</span><div class="spacing-bar-track"><div class="spacing-bar" style="width:40%;"><span class="spacing-val">16px</span></div></div></div>
+            <div class="spacing-row"><span class="spacing-label">chai-choco-p-6</span><div class="spacing-bar-track"><div class="spacing-bar" style="width:60%;"><span class="spacing-val">24px</span></div></div></div>
+            <div class="spacing-row"><span class="spacing-label">chai-choco-p-8</span><div class="spacing-bar-track"><div class="spacing-bar" style="width:80%;"><span class="spacing-val">32px</span></div></div></div>
+            <div class="spacing-row"><span class="spacing-label">chai-choco-p-10</span><div class="spacing-bar-track"><div class="spacing-bar" style="width:100%;"><span class="spacing-val">40px</span></div></div></div>
+          </div>
+        </div>
+        <div>
+          <p class="demo-label" style="margin-bottom:14px;">Also available</p>
+          <div class="chai-choco-stack">
+            <div><code>chai-choco-pt-{n}</code> <span style="font-size:12px; color:#A0785A;">padding-top</span></div>
+            <div><code>chai-choco-pb-{n}</code> <span style="font-size:12px; color:#A0785A;">padding-bottom</span></div>
+            <div><code>chai-choco-px-{n}</code> <span style="font-size:12px; color:#A0785A;">padding left+right</span></div>
+            <div><code>chai-choco-py-{n}</code> <span style="font-size:12px; color:#A0785A;">padding top+bottom</span></div>
+            <div><code>chai-choco-m-{n}</code>  <span style="font-size:12px; color:#A0785A;">margin (all sides)</span></div>
+            <div><code>chai-choco-mt/mb/mx/my-{n}</code></div>
+            <div><code>chai-choco-gap-{n}</code> <span style="font-size:12px; color:#A0785A;">flex/grid gap</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── ANIMATIONS ────────────────────────────────────────────────────────── -->
+    <section id="animations" class="section">
+      <p class="section-title">Motion</p>
+      <h2 class="section-heading">Animations</h2>
+      <p class="section-sub">Eight animations — all GPU-accelerated.</p>
+
+      <div id="anim-tiles" style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:24px;">
+        <div class="anim-tile chai-choco-fade-in"    data-anim="chai-choco-fade-in">    <div class="anim-icon">✨</div><div class="anim-name">fade-in</div></div>
+        <div class="anim-tile chai-choco-slide-up"   data-anim="chai-choco-slide-up">   <div class="anim-icon">⬆️</div><div class="anim-name">slide-up</div></div>
+        <div class="anim-tile chai-choco-slide-in"   data-anim="chai-choco-slide-in">   <div class="anim-icon">➡️</div><div class="anim-name">slide-in</div></div>
+        <div class="anim-tile chai-choco-bounce"     data-anim="chai-choco-bounce">     <div class="anim-icon">🎯</div><div class="anim-name">bounce</div></div>
+        <div class="anim-tile chai-choco-pulse"      data-anim="chai-choco-pulse">      <div class="anim-icon">💓</div><div class="anim-name">pulse</div></div>
+        <div class="anim-tile chai-choco-glow-pulse" data-anim="chai-choco-glow-pulse"> <div class="anim-icon">🌟</div><div class="anim-name">glow-pulse</div></div>
+        <div class="anim-tile chai-choco-shimmer"    data-anim="chai-choco-shimmer">    <div class="anim-icon">🍫</div><div class="anim-name">shimmer</div></div>
+        <div class="anim-tile">
+          <div class="chai-choco-spin" style="display:inline-block; font-size:22px; margin-bottom:8px;">⚙️</div>
+          <div class="anim-name">spin</div>
+        </div>
+      </div>
+
+      <button class="chai-choco-btn-ghost" id="replay-btn">↺ Replay animations</button>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── INTERACTIONS ──────────────────────────────────────────────────────── -->
+    <section class="section">
+      <p class="section-title">Motion</p>
+      <h2 class="section-heading">Interactions</h2>
+      <p class="section-sub">Hover each box to see its effect.</p>
+
+      <div style="display:flex; flex-wrap:wrap; gap:14px;">
+        <div class="interaction-box chai-choco-hover-lift">hover-lift<br><span style="color:#C68642; font-size:10px;">↑ translateY(-5px)</span></div>
+        <div class="interaction-box chai-choco-hover-scale">hover-scale<br><span style="color:#C68642; font-size:10px;">↔ scale(1.05)</span></div>
+        <div class="interaction-box chai-choco-hover-glow">hover-glow<br><span style="color:#C68642; font-size:10px;">✦ caramel glow</span></div>
+        <div class="interaction-box chai-choco-hover-bright">hover-bright<br><span style="color:#C68642; font-size:10px;">☀ brightness(1.12)</span></div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── LAYOUT ────────────────────────────────────────────────────────────── -->
+    <section class="section">
+      <p class="section-title">Layout</p>
+      <h2 class="section-heading">Layout Utilities</h2>
+      <p class="section-sub">Flex and grid helpers for common layouts.</p>
+
+      <div class="chai-choco-stack">
+        <div>
+          <p class="demo-label">chai-choco-flex-center</p>
+          <div class="demo-box" style="display:flex; align-items:center; justify-content:center; gap:10px; min-height:56px;">
+            <div style="background:#4A2515; border-radius:8px; padding:6px 14px; font-size:13px;" class="chai-choco-text-cream">Centered</div>
+            <div style="background:#4A2515; border-radius:8px; padding:6px 14px; font-size:13px;" class="chai-choco-text-cream">Content</div>
+          </div>
+        </div>
+        <div>
+          <p class="demo-label">chai-choco-flex-between</p>
+          <div class="demo-box" style="display:flex; align-items:center; justify-content:space-between;">
+            <div style="background:#4A2515; border-radius:8px; padding:6px 14px; font-size:13px;" class="chai-choco-text-cream">Left</div>
+            <div style="background:#4A2515; border-radius:8px; padding:6px 14px; font-size:13px;" class="chai-choco-text-cream">Right</div>
+          </div>
+        </div>
+        <div>
+          <p class="demo-label">chai-choco-grid-3</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
+            <div style="background:#4A2515; border-radius:8px; padding:10px; text-align:center; font-size:13px;" class="chai-choco-text-cream">Col 1</div>
+            <div style="background:#4A2515; border-radius:8px; padding:10px; text-align:center; font-size:13px;" class="chai-choco-text-cream">Col 2</div>
+            <div style="background:#4A2515; border-radius:8px; padding:10px; text-align:center; font-size:13px;" class="chai-choco-text-cream">Col 3</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── USAGE EXAMPLE ─────────────────────────────────────────────────────── -->
+    <section id="usage" class="section">
+      <p class="section-title">Quick Start</p>
+      <h2 class="section-heading">Complete Example</h2>
+      <p class="section-sub">A full working HTML file — copy, paste, open in browser.</p>
+
+      <div class="terminal" id="code-block">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <div class="terminal-dot" style="background:#c0392b;"></div>
+            <div class="terminal-dot" style="background:#e67e22;"></div>
+            <div class="terminal-dot" style="background:#2ecc71;"></div>
+          </div>
+          <span style="font-size:12px; color:#A0785A;">index.html</span>
+          <button class="copy-btn" id="copy-example-btn">Copy</button>
+        </div>
+        <div class="terminal-code"><span class="t-muted">&lt;!doctype html&gt;</span>
+<span class="t-muted">&lt;html lang="en"&gt;</span>
+<span class="t-muted">&lt;head&gt;</span>
+  <span class="t-muted">&lt;meta charset="UTF-8"&gt;</span>
+  <span class="t-muted">&lt;title&gt;</span>My Choco Page<span class="t-muted">&lt;/title&gt;</span>
+  <span class="t-green">&lt;script</span> <span class="t-caramel">type</span>=<span class="t-cream">"module"</span>
+    <span class="t-caramel">src</span>=<span class="t-cream">"https://unpkg.com/chai-choco-tailwind/dist/chai-choco-tailwind.esm.js"</span>
+  <span class="t-green">&gt;&lt;/script&gt;</span>
+<span class="t-muted">&lt;/head&gt;</span>
+<span class="t-muted">&lt;body class="</span><span class="t-caramel">chai-choco-bg-void</span><span class="t-muted">"&gt;</span>
+
+  <span class="t-muted">&lt;div class="</span><span class="t-caramel">chai-choco-flex-center chai-choco-p-10</span><span class="t-muted">"&gt;</span>
+    <span class="t-muted">&lt;div class="</span><span class="t-caramel">chai-choco-card chai-choco-stack</span><span class="t-muted">"&gt;</span>
+
+      <span class="t-muted">&lt;span class="</span><span class="t-caramel">chai-choco-badge-caramel</span><span class="t-muted">"&gt;</span>New<span class="t-muted">&lt;/span&gt;</span>
+
+      <span class="t-muted">&lt;h1 class="</span><span class="t-caramel">chai-choco-font-bold chai-choco-text-32 chai-choco-text-caramel</span><span class="t-muted">"&gt;</span>
+        Hello, Choco World! 🍫
+      <span class="t-muted">&lt;/h1&gt;</span>
+
+      <span class="t-muted">&lt;p class="</span><span class="t-caramel">chai-choco-text-muted chai-choco-leading-relaxed</span><span class="t-muted">"&gt;</span>
+        Runtime CSS. No build step. Just drop in the script tag.
+      <span class="t-muted">&lt;/p&gt;</span>
+
+      <span class="t-muted">&lt;button class="</span><span class="t-caramel">chai-choco-btn chai-choco-glow-pulse</span><span class="t-muted">"&gt;</span>
+        Get Started
+      <span class="t-muted">&lt;/button&gt;</span>
+
+    <span class="t-muted">&lt;/div&gt;</span>
+  <span class="t-muted">&lt;/div&gt;</span>
+
+<span class="t-muted">&lt;/body&gt;</span>
+<span class="t-muted">&lt;/html&gt;</span></div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── CLASS REFERENCE ───────────────────────────────────────────────────── -->
+    <section class="section">
+      <p class="section-title">Reference</p>
+      <h2 class="section-heading">All Classes</h2>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:20px;">
+        <div class="demo-box"><p class="demo-label">Backgrounds</p><div class="chai-choco-stack"><code>chai-choco-bg-void / darkest / dark / rich</code><code>chai-choco-bg-mid / milk / caramel / gold</code><code>chai-choco-bg-cream / latte</code><code>chai-choco-bg-gradient[-warm/-gold]</code></div></div>
+        <div class="demo-box"><p class="demo-label">Text Colors</p><div class="chai-choco-stack"><code>chai-choco-text-light / cream / muted</code><code>chai-choco-text-caramel / gold / dark</code><code>chai-choco-text-{n} → npx</code></div></div>
+        <div class="demo-box"><p class="demo-label">Layout</p><div class="chai-choco-stack"><code>chai-choco-flex-center / between / col / wrap</code><code>chai-choco-grid / grid-2 / grid-3</code><code>chai-choco-stack / container</code><code>chai-choco-w-full / h-full</code></div></div>
+        <div class="demo-box"><p class="demo-label">Spacing (dynamic)</p><div class="chai-choco-stack"><code>chai-choco-p-{n} / pt / pb / px / py</code><code>chai-choco-m-{n} / mt / mb / mx / my</code><code>chai-choco-gap-{n} — all n × 4px</code></div></div>
+        <div class="demo-box"><p class="demo-label">Typography</p><div class="chai-choco-stack"><code>chai-choco-font-bold/semibold/medium/light</code><code>chai-choco-uppercase / capitalize / italic</code><code>chai-choco-tracking-wide / -wider</code><code>chai-choco-leading-snug / -relaxed</code><code>chai-choco-text-center / left / right</code></div></div>
+        <div class="demo-box"><p class="demo-label">Borders &amp; Shadows</p><div class="chai-choco-stack"><code>chai-choco-rounded-sm/rounded/lg/xl/full</code><code>chai-choco-border / -cream / -caramel / -2</code><code>chai-choco-shadow-soft / md / hard</code><code>chai-choco-shadow-caramel / -glow</code></div></div>
+        <div class="demo-box"><p class="demo-label">Buttons</p><div class="chai-choco-stack"><code>chai-choco-btn / btn-outline / btn-ghost</code><code>chai-choco-btn-sm / btn-lg</code></div></div>
+        <div class="demo-box"><p class="demo-label">Cards / Badges / Inputs</p><div class="chai-choco-stack"><code>chai-choco-card / card-cream / card-glass</code><code>chai-choco-badge / -caramel / -cream / -dark</code><code>chai-choco-chip / avatar / divider</code><code>chai-choco-input / input-cream / label</code></div></div>
+        <div class="demo-box"><p class="demo-label">Animations</p><div class="chai-choco-stack"><code>chai-choco-fade-in / slide-up / slide-in</code><code>chai-choco-bounce / pulse / spin</code><code>chai-choco-glow-pulse / shimmer</code></div></div>
+        <div class="demo-box"><p class="demo-label">Interactions</p><div class="chai-choco-stack"><code>chai-choco-hover-lift / scale / glow / bright</code><code>chai-choco-transition / transition-fast</code><code>chai-choco-cursor-pointer / select-none</code></div></div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── COMING SOON ────────────────────────────────────────────────────────── -->
+    <section id="coming-soon" class="section">
+      <p class="section-title">Roadmap</p>
+      <h2 class="section-heading">This is just the beginning 🍫</h2>
+      <p class="section-sub">
+        <strong style="color:#F5E6D3;">v1.0 is live</strong> — and we're just getting started. Here's what's brewing in the next versions.
+      </p>
+
+      <!-- Banner -->
+      <div style="background: linear-gradient(135deg, #2C1810, #4A2515); border: 1px solid rgba(198,134,66,0.3); border-radius: 16px; padding: 28px 24px; margin-bottom: 40px; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:-20px; right:-20px; font-size:80px; opacity:0.06; pointer-events:none;">🍫</div>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap;">
+          <span class="chai-choco-badge-caramel" style="font-size:10px;">Current · v1.0</span>
+          <span style="color:#A0785A; font-size:13px;">→</span>
+          <span class="chai-choco-badge" style="font-size:10px; background: rgba(198,134,66,0.2); color: #C68642;">Coming · v2.0</span>
+        </div>
+        <p class="chai-choco-text-light chai-choco-font-semibold" style="font-size:18px; margin-bottom:6px;">
+          Something amazing is brewing ☕
+        </p>
+        <p class="chai-choco-text-muted" style="font-size:14px; max-width:520px; line-height:1.65;">
+          We're building the most deliciously designed CSS utility engine. More components, dark/light mode support, a CLI tool, and a live playground — all chocolate-flavoured.
+        </p>
+      </div>
+
+      <!-- Roadmap cards -->
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <div class="roadmap-icon">🎨</div>
+          <div class="roadmap-title">Dark &amp; Light Mode</div>
+          <div class="roadmap-desc">Auto-switching themes with <code>chai-choco-dark</code> and <code>chai-choco-light</code> root classes. Respects system preference too.</div>
+          <span class="roadmap-tag">v1.1</span>
+        </div>
+        <div class="roadmap-card">
+          <div class="roadmap-icon">🧩</div>
+          <div class="roadmap-title">More Components</div>
+          <div class="roadmap-desc">Tooltips, modals, dropdowns, tabs, accordions, and a full navigation component — all in the choco palette.</div>
+          <span class="roadmap-tag">v1.2</span>
+        </div>
+        <div class="roadmap-card">
+          <div class="roadmap-icon">⚡</div>
+          <div class="roadmap-title">CLI Tool</div>
+          <div class="roadmap-desc">Generate a custom <code>choco.config.js</code> to extend the palette, add custom classes, and purge unused utilities at build time.</div>
+          <span class="roadmap-tag">v1.3</span>
+        </div>
+        <div class="roadmap-card">
+          <div class="roadmap-icon">🖥️</div>
+          <div class="roadmap-title">Live Playground</div>
+          <div class="roadmap-desc">A browser-based editor where you write HTML with chai-choco-* classes and see the output live — shareable via URL.</div>
+          <span class="roadmap-tag">v2.0</span>
+        </div>
+        <div class="roadmap-card">
+          <div class="roadmap-icon">📐</div>
+          <div class="roadmap-title">Responsive Utilities</div>
+          <div class="roadmap-desc"><code>chai-choco-sm-*, md-*, lg-*</code> breakpoint modifiers so every utility responds to screen size.</div>
+          <span class="roadmap-tag">v1.2</span>
+        </div>
+        <div class="roadmap-card">
+          <div class="roadmap-icon">🔌</div>
+          <div class="roadmap-title">Framework Plugins</div>
+          <div class="roadmap-desc">Official plugins for React, Vue, and Svelte that integrate chai-choco-tailwind with hot-reload support out of the box.</div>
+          <span class="roadmap-tag">v2.0</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 32px; text-align:center;">
+        <p class="chai-choco-text-muted" style="font-size:14px; margin-bottom:14px;">Want to be notified when new versions drop?</p>
+        <a href="https://github.com/SaurabhPrjpt/chai-tailwind" target="_blank" class="chai-choco-btn-outline">
+          ⭐ Star on GitHub
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
+    <footer style="padding: 48px 24px; text-align: center; max-width: 1100px; margin: 0 auto;">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+        <div class="chai-choco-flex-center" style="gap:10px; flex-wrap:wrap;">
+          <span style="font-size:22px;">🍫</span>
+          <span class="chai-choco-font-bold chai-choco-text-caramel" style="font-size:17px;">chai-choco-tailwind</span>
+          <span class="chai-choco-badge-caramel" style="font-size:10px;">v1.0.0</span>
+        </div>
+        <p class="chai-choco-text-muted" style="font-size:13px;">
+          Built by <strong class="chai-choco-text-cream">Saurabh Prajapati</strong> · MIT License
+        </p>
+        <p class="chai-choco-text-muted" style="font-size:12px; max-width:320px; line-height:1.65;">
+          Zero build step. Zero config. Drop in a script tag and write <code>chai-choco-*</code> classes.
+        </p>
+        <div class="chai-choco-flex-center" style="gap:8px; flex-wrap:wrap;">
+          <a href="https://www.npmjs.com/package/chai-choco-tailwind" target="_blank" class="chai-choco-chip chai-choco-hover-bright" style="text-decoration:none; cursor:pointer;">npm</a>
+          <a href="https://github.com/SaurabhPrjpt/chai-tailwind" target="_blank" class="chai-choco-chip chai-choco-hover-bright" style="text-decoration:none; cursor:pointer;">GitHub</a>
+          <a href="https://github.com/SaurabhPrjpt/chai-tailwind/issues" target="_blank" class="chai-choco-chip chai-choco-hover-bright" style="text-decoration:none; cursor:pointer;">Issues</a>
+        </div>
+        <p style="font-size:11px; color:#4A2515; margin-top:4px;">
+          Made with 🍫 for the ChaiCode community
+        </p>
+      </div>
+    </footer>
+
     <script type="module" src="/src/index.js"></script>
+
+    <script>
+      // ── Toast ──
+      let toastTimer;
+      function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+      }
+
+      // ── Copy text to clipboard ──
+      function copyText(text, btn) {
+        navigator.clipboard.writeText(text).then(() => {
+          const orig = btn.textContent;
+          btn.textContent = '✓ Copied!';
+          btn.classList.add('copied');
+          showToast('📋 Copied to clipboard!');
+          setTimeout(() => {
+            btn.textContent = orig;
+            btn.classList.remove('copied');
+          }, 2000);
+        }).catch(() => {
+          showToast('⚠️ Copy failed — please copy manually.');
+        });
+      }
+
+      // ── Usage example copy ──
+      document.getElementById('copy-example-btn').onclick = function() {
+        const raw = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Choco Page</title>
+  <script type="module"
+    src="https://unpkg.com/chai-choco-tailwind/dist/chai-choco-tailwind.esm.js"
+  ><\/script>
+</head>
+<body class="chai-choco-bg-void">
+
+  <div class="chai-choco-flex-center chai-choco-p-10">
+    <div class="chai-choco-card chai-choco-stack">
+
+      <span class="chai-choco-badge-caramel">New</span>
+
+      <h1 class="chai-choco-font-bold chai-choco-text-32 chai-choco-text-caramel">
+        Hello, Choco World! 🍫
+      </h1>
+
+      <p class="chai-choco-text-muted chai-choco-leading-relaxed">
+        Runtime CSS. No build step. Just drop in the script tag.
+      </p>
+
+      <button class="chai-choco-btn chai-choco-glow-pulse">
+        Get Started
+      </button>
+
+    </div>
+  </div>
+
+</body>
+</html>`;
+        copyText(raw, this);
+      };
+
+      // ── Demo buttons toast ──
+      function demoClick(btn, className) {
+        showToast('🍫 Try: class="' + className + '"');
+      }
+
+      // ── Replay animations ──
+      document.getElementById('replay-btn').onclick = function() {
+        const tiles = document.querySelectorAll('#anim-tiles [data-anim]');
+        tiles.forEach(el => {
+          const cls = el.dataset.anim;
+          el.classList.remove(cls);
+          void el.offsetWidth;
+          el.classList.add(cls);
+        });
+        showToast('↺ Animations replayed!');
+      };
+
+      // ── Hamburger nav ──
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      hamburger.onclick = function() {
+        const open = mobileMenu.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', open);
+        // Animate hamburger to X
+        const spans = hamburger.querySelectorAll('span');
+        if (open) {
+          spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+        } else {
+          spans[0].style.transform = '';
+          spans[1].style.opacity = '';
+          spans[2].style.transform = '';
+        }
+      };
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        const spans = hamburger.querySelectorAll('span');
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+      }
+      // Close on outside click
+      document.addEventListener('click', function(e) {
+        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
+    </script>
   </body>
 </html>
