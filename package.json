@@ -1,6 +1,6 @@
 {
   "name": "chai-choco-tailwind",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A chocolate-themed runtime CSS utility engine. Drop in a script tag — no build step needed.",
   "private": false,
   "type": "module",
