@@ -2,6 +2,18 @@
 
 set -e
 
+# ─── NPM Auth Token ───────────────────────────────────────────────────────────
+# Set your npm Automation token here to bypass 2FA on publish.
+# Get one at: https://www.npmjs.com/settings/<your-username>/tokens
+# Token type: "Automation" (Classic) or Granular with bypass 2FA enabled.
+NPM_TOKEN=""
+# ──────────────────────────────────────────────────────────────────────────────
+
+if [[ -n "$NPM_TOKEN" ]]; then
+  echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+  trap 'rm -f .npmrc' EXIT
+fi
+
 echo ""
 echo "🍫 chai-choco-tailwind — publish script"
 echo "========================================"
@@ -43,6 +55,6 @@ fi
 
 # Publish
 npm publish --access public
-echo ""
+echo ""F
 echo "✅ Published chai-choco-tailwind@$NEW_VERSION to npm!"
 echo "   https://www.npmjs.com/package/chai-choco-tailwind"
