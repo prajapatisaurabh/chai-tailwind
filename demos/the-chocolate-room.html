@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Chocolate Room — Indulge in Every Bite</title>
+  <meta name="description" content="The Chocolate Room — India's most loved chocolate café. Handcrafted hot chocolates, decadent desserts, and a world of cocoa."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .display { font-family: 'Playfair Display', Georgia, serif; }
+    ::selection { background: rgba(198,134,66,0.35); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #1a0a00; }
+    ::-webkit-scrollbar-thumb { background: #4A2515; border-radius: 3px; }
+    /* Only structural — not design */
+    .fixed-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+    .full-hero  { min-height: 100vh; }
+    .half-vh    { min-height: 50vh; }
+    .img-cover  { width: 100%; height: 100%; object-fit: cover; }
+    .overflow-h { overflow: hidden; }
+    .relative   { position: relative; }
+    .abs-fill   { position: absolute; inset: 0; pointer-events: none; }
+    .z1         { position: relative; z-index: 1; }
+    .w-full     { width: 100%; }
+    .block      { display: block; }
+    .no-decor   { text-decoration: none; list-style: none; }
+    @media (max-width: 768px) {
+      .hide-mobile { display: none !important; }
+      .chai-choco-grid-2, .chai-choco-grid-3 { grid-template-columns: 1fr !important; }
+      .mobile-col { flex-direction: column !important; }
+    }
+    .demo-nav-bar{position:fixed;bottom:20px;left:20px;z-index:200;display:flex;align-items:center;gap:6px;}
+    .back-link,.comp-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;backdrop-filter:blur(12px);text-decoration:none;font-size:13px;font-weight:600;transition:all .2s;}
+    .back-link{background:rgba(44,24,16,0.9);border:1px solid rgba(198,134,66,0.3);color:#C68642;}
+    .back-link:hover{background:rgba(44,24,16,1);border-color:rgba(198,134,66,0.5);}
+    .comp-link{background:rgba(44,24,16,0.7);border:1px solid rgba(198,134,66,0.15);color:#A0785A;}
+    .comp-link:hover{background:rgba(44,24,16,0.9);color:#C68642;border-color:rgba(198,134,66,0.3);}
+  </style>
+</head>
+<body class="chai-choco-bg-void">
+
+<!-- ══════════════════════════ NAVIGATION ══════════════════════════ -->
+<nav class="fixed-nav chai-choco-bg-void chai-choco-shadow-hard" style="border-bottom:1px solid rgba(198,134,66,0.12);">
+  <div class="chai-choco-container chai-choco-flex-between chai-choco-py-3" style="height:64px;">
+
+    <a href="#hero" class="no-decor chai-choco-flex-center chai-choco-gap-3">
+      <div class="chai-choco-bg-gradient-warm chai-choco-rounded chai-choco-flex-center chai-choco-shadow-caramel"
+           style="width:36px;height:36px;">
+        <span class="chai-choco-text-light chai-choco-font-bold chai-choco-text-16">T</span>
+      </div>
+      <div>
+        <div class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-16 chai-choco-leading-snug">The Chocolate Room</div>
+        <div class="chai-choco-text-muted chai-choco-text-11 chai-choco-tracking-wider chai-choco-uppercase">Est. 2006</div>
+      </div>
+    </a>
+
+    <ul class="no-decor chai-choco-flex-center chai-choco-gap-8 hide-mobile">
+      <li><a href="#menu"       class="no-decor chai-choco-text-muted chai-choco-text-14 chai-choco-font-medium chai-choco-transition chai-choco-hover-bright">Menu</a></li>
+      <li><a href="#experience" class="no-decor chai-choco-text-muted chai-choco-text-14 chai-choco-font-medium chai-choco-transition chai-choco-hover-bright">Experience</a></li>
+      <li><a href="#specials"   class="no-decor chai-choco-text-muted chai-choco-text-14 chai-choco-font-medium chai-choco-transition chai-choco-hover-bright">Specials</a></li>
+      <li><a href="#locations"  class="no-decor chai-choco-text-muted chai-choco-text-14 chai-choco-font-medium chai-choco-transition chai-choco-hover-bright">Locations</a></li>
+    </ul>
+
+    <div class="chai-choco-flex-center chai-choco-gap-3">
+      <a href="#reservation" class="chai-choco-btn-ghost chai-choco-btn-sm no-decor hide-mobile">Reserve Table</a>
+      <a href="#menu"        class="chai-choco-btn    chai-choco-btn-sm no-decor">Order Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════ HERO ══════════════════════════════════ -->
+<section id="hero" class="full-hero chai-choco-bg-gradient overflow-h relative chai-choco-flex-col chai-choco-flex-center">
+
+  <!-- grain overlay -->
+  <div class="abs-fill" style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(198,134,66,0.18) 0%,transparent 65%);"></div>
+  <div class="abs-fill" style="background:radial-gradient(ellipse 40% 40% at 80% 80%,rgba(74,37,21,0.5) 0%,transparent 70%);"></div>
+
+  <div class="chai-choco-container chai-choco-text-center chai-choco-flex-col chai-choco-flex-center z1" style="gap:0;padding-top:80px;">
+
+    <span class="chai-choco-badge-caramel chai-choco-fade-in chai-choco-mb-6 chai-choco-tracking-wider chai-choco-uppercase chai-choco-text-11">
+      India's Most Loved Chocolate Café
+    </span>
+
+    <h1 class="display chai-choco-text-light chai-choco-fade-in chai-choco-mb-6 chai-choco-leading-snug" style="font-size:clamp(48px,8vw,96px);letter-spacing:-2px;max-width:900px;">
+      Where Every Moment<br/>
+      <span class="chai-choco-text-caramel chai-choco-italic">Tastes Like</span> Heaven.
+    </h1>
+
+    <p class="chai-choco-text-cream chai-choco-text-18 chai-choco-leading-relaxed chai-choco-fade-in chai-choco-mb-10" style="max-width:540px;margin-left:auto;margin-right:auto;">
+      Handcrafted hot chocolates, decadent fondue, and artisan desserts — made with the world's finest Belgian cacao.
+    </p>
+
+    <div class="chai-choco-flex-center chai-choco-gap-4 chai-choco-fade-in chai-choco-flex-wrap chai-choco-mb-16">
+      <a href="#menu"        class="chai-choco-btn    chai-choco-btn-lg no-decor">Explore the Menu</a>
+      <a href="#experience"  class="chai-choco-btn-outline chai-choco-btn-lg no-decor">Our Story</a>
+    </div>
+
+    <!-- floating stat chips -->
+    <div class="chai-choco-flex-center chai-choco-gap-4 chai-choco-flex-wrap chai-choco-fade-in">
+      <div class="chai-choco-card-glass chai-choco-px-5 chai-choco-py-3 chai-choco-flex-center chai-choco-gap-3 chai-choco-rounded-xl">
+        <span class="chai-choco-text-gold chai-choco-text-24 chai-choco-font-bold display">200+</span>
+        <span class="chai-choco-text-muted chai-choco-text-13">Outlets Across India</span>
+      </div>
+      <div class="chai-choco-card-glass chai-choco-px-5 chai-choco-py-3 chai-choco-flex-center chai-choco-gap-3 chai-choco-rounded-xl">
+        <span class="chai-choco-text-gold chai-choco-text-24 chai-choco-font-bold display">18+</span>
+        <span class="chai-choco-text-muted chai-choco-text-13">Years of Craft</span>
+      </div>
+      <div class="chai-choco-card-glass chai-choco-px-5 chai-choco-py-3 chai-choco-flex-center chai-choco-gap-3 chai-choco-rounded-xl">
+        <span class="chai-choco-text-gold chai-choco-text-24 chai-choco-font-bold display">100%</span>
+        <span class="chai-choco-text-muted chai-choco-text-13">Belgian Chocolate</span>
+      </div>
+      <div class="chai-choco-card-glass chai-choco-px-5 chai-choco-py-3 chai-choco-flex-center chai-choco-gap-3 chai-choco-rounded-xl">
+        <span class="chai-choco-text-gold chai-choco-text-24 chai-choco-font-bold display">★ 4.8</span>
+        <span class="chai-choco-text-muted chai-choco-text-13">Average Rating</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- scroll hint -->
+  <div class="chai-choco-flex-col chai-choco-flex-center chai-choco-gap-2 chai-choco-text-muted chai-choco-text-12 chai-choco-tracking-wider chai-choco-uppercase chai-choco-bounce z1"
+       style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Scroll to Indulge
+  </div>
+</section>
+
+<!-- ══════════════════════════ AWARDS STRIP ═══════════════════════════ -->
+<div class="chai-choco-bg-darkest chai-choco-py-5" style="border-top:1px solid rgba(198,134,66,0.1);border-bottom:1px solid rgba(198,134,66,0.1);">
+  <div class="chai-choco-container chai-choco-flex-center chai-choco-gap-10 chai-choco-flex-wrap">
+    <div class="chai-choco-flex-center chai-choco-gap-3">
+      <span class="chai-choco-text-caramel chai-choco-text-20">★</span>
+      <span class="chai-choco-text-muted chai-choco-text-13 chai-choco-font-medium">Best Dessert Café 2023</span>
+    </div>
+    <div class="chai-choco-text-dark chai-choco-text-20 hide-mobile" style="opacity:.2;">|</div>
+    <div class="chai-choco-flex-center chai-choco-gap-3">
+      <span class="chai-choco-text-caramel chai-choco-text-20">✦</span>
+      <span class="chai-choco-text-muted chai-choco-text-13 chai-choco-font-medium">Premium Belgian Chocolate Partner</span>
+    </div>
+    <div class="chai-choco-text-dark chai-choco-text-20 hide-mobile" style="opacity:.2;">|</div>
+    <div class="chai-choco-flex-center chai-choco-gap-3">
+      <span class="chai-choco-text-caramel chai-choco-text-20">◆</span>
+      <span class="chai-choco-text-muted chai-choco-text-13 chai-choco-font-medium">Times Food Award Winner</span>
+    </div>
+    <div class="chai-choco-text-dark chai-choco-text-20 hide-mobile" style="opacity:.2;">|</div>
+    <div class="chai-choco-flex-center chai-choco-gap-3">
+      <span class="chai-choco-text-caramel chai-choco-text-20">❋</span>
+      <span class="chai-choco-text-muted chai-choco-text-13 chai-choco-font-medium">Zomato Dining Hall of Fame</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ SIGNATURE MENU ════════════════════════ -->
+<section id="menu" class="chai-choco-bg-void chai-choco-py-24">
+  <div class="chai-choco-container">
+
+    <div class="chai-choco-text-center chai-choco-mb-12">
+      <span class="chai-choco-badge-caramel chai-choco-mb-5 chai-choco-tracking-wider">Our Menu</span>
+      <h2 class="display chai-choco-text-light chai-choco-font-bold chai-choco-mb-4 chai-choco-leading-snug" style="font-size:clamp(32px,5vw,56px);">
+        Crafted for the<br/><span class="chai-choco-text-caramel">True Chocolate Lover</span>
+      </h2>
+      <p class="chai-choco-text-muted chai-choco-text-16 chai-choco-leading-relaxed" style="max-width:500px;margin:0 auto;">
+        Every item is made fresh, using authentic Belgian couverture chocolate — dark, milk, and white.
+      </p>
+    </div>
+
+    <!-- category tabs -->
+    <div class="chai-choco-flex-center chai-choco-gap-3 chai-choco-mb-10 chai-choco-flex-wrap">
+      <button class="chai-choco-btn chai-choco-btn-sm">Hot Chocolates</button>
+      <button class="chai-choco-btn-ghost chai-choco-btn-sm">Desserts</button>
+      <button class="chai-choco-btn-ghost chai-choco-btn-sm">Fondue</button>
+      <button class="chai-choco-btn-ghost chai-choco-btn-sm">Cakes</button>
+      <button class="chai-choco-btn-ghost chai-choco-btn-sm">Beverages</button>
+    </div>
+
+    <!-- 3-col menu cards -->
+    <div class="chai-choco-grid-3 chai-choco-gap-5">
+
+      <div class="chai-choco-card chai-choco-hover-lift overflow-h">
+        <div class="chai-choco-bg-gradient-warm chai-choco-flex-center chai-choco-py-8 chai-choco-mb-4 chai-choco-rounded-lg" style="font-size:64px;">☕</div>
+        <span class="chai-choco-badge-caramel chai-choco-mb-3">Bestseller</span>
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-20 chai-choco-mb-2">Belgian Hot Chocolate</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-4">
+          Rich, velvety Belgian chocolate melted to perfection. Available in Dark 70%, Milk, and White variants.
+        </p>
+        <div class="chai-choco-flex-between">
+          <span class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-18">₹ 199</span>
+          <button class="chai-choco-btn chai-choco-btn-sm">Add to Order</button>
+        </div>
+      </div>
+
+      <div class="chai-choco-card chai-choco-hover-lift overflow-h">
+        <div class="chai-choco-bg-dark chai-choco-flex-center chai-choco-py-8 chai-choco-mb-4 chai-choco-rounded-lg chai-choco-shadow-glow" style="font-size:64px;">🫕</div>
+        <span class="chai-choco-badge-dark chai-choco-mb-3">Signature</span>
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-20 chai-choco-mb-2">Chocolate Fondue</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-4">
+          Warm Belgian chocolate in a fondue pot, served with fresh fruits, marshmallows, and waffle pieces.
+        </p>
+        <div class="chai-choco-flex-between">
+          <span class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-18">₹ 449</span>
+          <button class="chai-choco-btn chai-choco-btn-sm">Add to Order</button>
+        </div>
+      </div>
+
+      <div class="chai-choco-card chai-choco-hover-lift overflow-h">
+        <div class="chai-choco-bg-rich chai-choco-flex-center chai-choco-py-8 chai-choco-mb-4 chai-choco-rounded-lg" style="font-size:64px;">🍮</div>
+        <span class="chai-choco-badge-caramel chai-choco-mb-3">Chef's Pick</span>
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-20 chai-choco-mb-2">Molten Lava Cake</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-4">
+          Warm dark chocolate cake with a liquid caramel center, served with a scoop of vanilla bean ice cream.
+        </p>
+        <div class="chai-choco-flex-between">
+          <span class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-18">₹ 289</span>
+          <button class="chai-choco-btn chai-choco-btn-sm">Add to Order</button>
+        </div>
+      </div>
+
+      <div class="chai-choco-card chai-choco-hover-lift overflow-h">
+        <div class="chai-choco-bg-gradient chai-choco-flex-center chai-choco-py-8 chai-choco-mb-4 chai-choco-rounded-lg" style="font-size:64px;">🧇</div>
+        <span class="chai-choco-badge-cream chai-choco-mb-3">New</span>
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-20 chai-choco-mb-2">Choco Waffle Tower</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-4">
+          Stacked Belgian chocolate waffles drizzled with caramel sauce, topped with fresh berries and whipped cream.
+        </p>
+        <div class="chai-choco-flex-between">
+          <span class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-18">₹ 349</span>
+          <button class="chai-choco-btn chai-choco-btn-sm">Add to Order</button>
+        </div>
+      </div>
+
+      <div class="chai-choco-card chai-choco-hover-lift overflow-h">
+        <div class="chai-choco-bg-mid chai-choco-flex-center chai-choco-py-8 chai-choco-mb-4 chai-choco-rounded-lg" style="font-size:64px;">🍫</div>
+        <span class="chai-choco-badge-caramel chai-choco-mb-3">All-time Fav</span>
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-20 chai-choco-mb-2">Brownie Sundae</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-4">
+          Warm fudgy dark chocolate brownie, topped with two scoops of ice cream, hot fudge, and crushed nuts.
+        </p>
+        <div class="chai-choco-flex-between">
+          <span class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-18">₹ 269</span>
+          <button class="chai-choco-btn chai-choco-btn-sm">Add to Order</button>
+        </div>
+      </div>
+
+      <div class="chai-choco-card chai-choco-hover-lift overflow-h">
+        <div class="chai-choco-bg-gradient-gold chai-choco-flex-center chai-choco-py-8 chai-choco-mb-4 chai-choco-rounded-lg" style="font-size:64px;">🥛</div>
+        <span class="chai-choco-badge-dark chai-choco-mb-3">Refreshing</span>
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-20 chai-choco-mb-2">Choco Thick Shake</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-4">
+          Extra-thick Belgian chocolate milkshake blended with premium ice cream. Served with a mountain of whipped cream.
+        </p>
+        <div class="chai-choco-flex-between">
+          <span class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-18">₹ 229</span>
+          <button class="chai-choco-btn chai-choco-btn-sm">Add to Order</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="chai-choco-text-center chai-choco-mt-10">
+      <a href="#" class="chai-choco-btn-outline no-decor">View Full Menu →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ FONDUE FEATURE ════════════════════════ -->
+<section class="chai-choco-bg-darkest chai-choco-py-0 overflow-h relative" id="specials">
+  <div class="chai-choco-bg-gradient-warm chai-choco-py-16" style="border-top:1px solid rgba(198,134,66,0.15);border-bottom:1px solid rgba(198,134,66,0.15);">
+    <div class="chai-choco-container">
+      <div class="chai-choco-grid-2 chai-choco-gap-10" style="align-items:center;">
+
+        <div class="chai-choco-flex-col chai-choco-gap-5">
+          <span class="chai-choco-badge-dark chai-choco-w-full" style="width:fit-content;">★ Signature Experience</span>
+          <h2 class="display chai-choco-text-light chai-choco-font-bold chai-choco-leading-snug" style="font-size:clamp(32px,4vw,52px);">
+            The Grand<br/>Chocolate Fondue
+          </h2>
+          <p class="chai-choco-text-cream chai-choco-text-16 chai-choco-leading-relaxed">
+            A centrepiece of indulgence. Our Grand Fondue arrives in a hand-crafted ceramic pot, filled with silky-smooth 70% dark Belgian chocolate — kept warm at the perfect dipping temperature.
+          </p>
+          <p class="chai-choco-text-cream chai-choco-text-16 chai-choco-leading-relaxed">
+            Served alongside a platter of seasonal fruits, homemade marshmallows, crispy waffle soldiers, and our house-made caramel popcorn.
+          </p>
+          <div class="chai-choco-flex-center chai-choco-gap-4 chai-choco-flex-wrap" style="justify-content:flex-start;">
+            <div class="chai-choco-card-glass chai-choco-px-4 chai-choco-py-3 chai-choco-text-center chai-choco-rounded-lg">
+              <div class="chai-choco-text-light chai-choco-font-bold chai-choco-text-20 display">₹ 649</div>
+              <div class="chai-choco-text-cream chai-choco-text-12">For 2 persons</div>
+            </div>
+            <div class="chai-choco-card-glass chai-choco-px-4 chai-choco-py-3 chai-choco-text-center chai-choco-rounded-lg">
+              <div class="chai-choco-text-light chai-choco-font-bold chai-choco-text-20 display">₹ 999</div>
+              <div class="chai-choco-text-cream chai-choco-text-12">For 4 persons</div>
+            </div>
+          </div>
+          <div>
+            <button class="chai-choco-btn chai-choco-btn-lg">Reserve Your Fondue Table</button>
+          </div>
+        </div>
+
+        <div class="chai-choco-flex-col chai-choco-gap-4">
+          <div class="chai-choco-card chai-choco-flex-center chai-choco-flex-col chai-choco-py-12 chai-choco-rounded-xl chai-choco-shadow-hard chai-choco-glow-pulse chai-choco-text-center">
+            <div style="font-size:120px;line-height:1;">🫕</div>
+            <div class="chai-choco-text-caramel chai-choco-text-14 chai-choco-font-semibold chai-choco-tracking-wider chai-choco-uppercase chai-choco-mt-4">Grand Chocolate Fondue</div>
+            <div class="chai-choco-divider chai-choco-my-4"></div>
+            <div class="chai-choco-flex-center chai-choco-gap-3 chai-choco-flex-wrap">
+              <span class="chai-choco-chip">Dark 70%</span>
+              <span class="chai-choco-chip">Fresh Fruits</span>
+              <span class="chai-choco-chip">Marshmallows</span>
+              <span class="chai-choco-chip">Waffles</span>
+            </div>
+          </div>
+          <div class="chai-choco-grid-2 chai-choco-gap-4">
+            <div class="chai-choco-card chai-choco-text-center chai-choco-py-4">
+              <div style="font-size:32px;">🍓</div>
+              <div class="chai-choco-text-muted chai-choco-text-13 chai-choco-mt-2">Fresh Strawberries</div>
+            </div>
+            <div class="chai-choco-card chai-choco-text-center chai-choco-py-4">
+              <div style="font-size:32px;">🍌</div>
+              <div class="chai-choco-text-muted chai-choco-text-13 chai-choco-mt-2">Banana Slices</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ OUR STORY ═════════════════════════════ -->
+<section id="experience" class="chai-choco-bg-void chai-choco-py-24">
+  <div class="chai-choco-container">
+    <div class="chai-choco-grid-2 chai-choco-gap-16" style="align-items:center;">
+
+      <!-- visual side -->
+      <div class="chai-choco-flex-col chai-choco-gap-4">
+        <div class="chai-choco-card overflow-h chai-choco-shadow-hard chai-choco-rounded-xl chai-choco-py-16 chai-choco-flex-center chai-choco-flex-col chai-choco-gap-4">
+          <div style="font-size:80px;line-height:1;">🍫</div>
+          <div class="display chai-choco-text-caramel chai-choco-text-28 chai-choco-font-bold chai-choco-text-center chai-choco-leading-snug">
+            "Pure Belgian.<br/>Pure Passion."
+          </div>
+          <div class="chai-choco-text-muted chai-choco-text-14 chai-choco-italic">— Founder, The Chocolate Room</div>
+        </div>
+        <div class="chai-choco-grid-2 chai-choco-gap-4">
+          <div class="chai-choco-card-glass chai-choco-py-6 chai-choco-text-center chai-choco-rounded-xl">
+            <div class="display chai-choco-text-caramel chai-choco-font-bold chai-choco-text-36">2006</div>
+            <div class="chai-choco-text-muted chai-choco-text-13">Year Founded</div>
+          </div>
+          <div class="chai-choco-card-glass chai-choco-py-6 chai-choco-text-center chai-choco-rounded-xl">
+            <div class="display chai-choco-text-caramel chai-choco-font-bold chai-choco-text-36">40+</div>
+            <div class="chai-choco-text-muted chai-choco-text-13">Cities in India</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- text side -->
+      <div class="chai-choco-flex-col chai-choco-gap-6">
+        <span class="chai-choco-badge-caramel" style="width:fit-content;">Our Story</span>
+        <h2 class="display chai-choco-text-light chai-choco-font-bold chai-choco-leading-snug" style="font-size:clamp(28px,4vw,44px);">
+          Born from a Passion for the World's Finest Chocolate
+        </h2>
+        <p class="chai-choco-text-muted chai-choco-text-16 chai-choco-leading-relaxed">
+          The Chocolate Room was born in 2006 with a simple dream — to bring the authentic taste of Belgian chocolate to every Indian city. What started as a single café has grown into India's largest premium chocolate café chain.
+        </p>
+        <p class="chai-choco-text-muted chai-choco-text-16 chai-choco-leading-relaxed">
+          We source only Callebaut Belgian couverture chocolate — the same chocolate used by master chocolatiers in Brussels. Every cup, every dessert, every truffle is crafted fresh, every single day.
+        </p>
+        <div class="chai-choco-divider"></div>
+        <div class="chai-choco-flex-center chai-choco-gap-8 chai-choco-flex-wrap" style="justify-content:flex-start;">
+          <div>
+            <div class="display chai-choco-text-gold chai-choco-font-bold chai-choco-text-32">₹199</div>
+            <div class="chai-choco-text-muted chai-choco-text-13">Starts from</div>
+          </div>
+          <div>
+            <div class="display chai-choco-text-gold chai-choco-font-bold chai-choco-text-32">50+</div>
+            <div class="chai-choco-text-muted chai-choco-text-13">Menu items</div>
+          </div>
+          <div>
+            <div class="display chai-choco-text-gold chai-choco-font-bold chai-choco-text-32">4.8★</div>
+            <div class="chai-choco-text-muted chai-choco-text-13">Customer rating</div>
+          </div>
+        </div>
+        <div>
+          <a href="#" class="chai-choco-btn no-decor" style="width:fit-content;">Read Our Full Story →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SEASONAL SPECIAL ══════════════════════ -->
+<section class="chai-choco-bg-dark chai-choco-py-20" style="border-top:1px solid rgba(198,134,66,0.1);">
+  <div class="chai-choco-container">
+
+    <div class="chai-choco-text-center chai-choco-mb-10">
+      <span class="chai-choco-badge-caramel chai-choco-mb-5 chai-choco-glow-pulse">Limited Season Specials</span>
+      <h2 class="display chai-choco-text-light chai-choco-font-bold chai-choco-leading-snug" style="font-size:clamp(28px,4vw,48px);">
+        Available This Season Only
+      </h2>
+      <p class="chai-choco-text-muted chai-choco-text-16 chai-choco-mt-3">
+        Crafted for the season — before they're gone.
+      </p>
+    </div>
+
+    <div class="chai-choco-grid-3 chai-choco-gap-5">
+
+      <div class="chai-choco-card-glass chai-choco-hover-lift overflow-h chai-choco-rounded-xl">
+        <div class="chai-choco-bg-gradient-warm chai-choco-flex-center chai-choco-py-10 chai-choco-rounded-xl" style="font-size:72px;margin:-24px -24px 20px -24px;border-radius:16px 16px 0 0;">
+          🍓
+        </div>
+        <span class="chai-choco-badge-caramel chai-choco-mb-3">Limited Edition</span>
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-20 chai-choco-mb-2">Strawberry Choco Dream</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-5">
+          Fresh seasonal strawberries, white chocolate mousse, dark chocolate drizzle on a crumbly almond tart.
+        </p>
+        <div class="chai-choco-flex-between">
+          <span class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-18">₹ 319</span>
+          <button class="chai-choco-btn chai-choco-btn-sm">Order Now</button>
+        </div>
+      </div>
+
+      <div class="chai-choco-card-glass chai-choco-hover-lift overflow-h chai-choco-rounded-xl chai-choco-shadow-glow">
+        <div class="chai-choco-bg-gradient chai-choco-flex-center chai-choco-py-10 chai-choco-rounded-xl" style="font-size:72px;margin:-24px -24px 20px -24px;border-radius:16px 16px 0 0;">
+          🍵
+        </div>
+        <div class="chai-choco-flex-center chai-choco-gap-2 chai-choco-mb-3" style="justify-content:flex-start;">
+          <span class="chai-choco-badge-dark">Chef's Special</span>
+          <span class="chai-choco-badge-caramel">New</span>
+        </div>
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-20 chai-choco-mb-2">Matcha Choco Fusion</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-5">
+          Premium ceremonial matcha blended with 40% milk Belgian chocolate. A harmony of bitter and sweet.
+        </p>
+        <div class="chai-choco-flex-between">
+          <span class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-18">₹ 259</span>
+          <button class="chai-choco-btn chai-choco-btn-sm">Order Now</button>
+        </div>
+      </div>
+
+      <div class="chai-choco-card-glass chai-choco-hover-lift overflow-h chai-choco-rounded-xl">
+        <div class="chai-choco-bg-mid chai-choco-flex-center chai-choco-py-10 chai-choco-rounded-xl" style="font-size:72px;margin:-24px -24px 20px -24px;border-radius:16px 16px 0 0;">
+          🎃
+        </div>
+        <span class="chai-choco-badge-cream chai-choco-mb-3">Festive</span>
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-20 chai-choco-mb-2">Spiced Dark Cocoa</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-5">
+          Intense 70% dark chocolate warmed with cardamom, cinnamon, and a hint of star anise. A winter classic.
+        </p>
+        <div class="chai-choco-flex-between">
+          <span class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-18">₹ 219</span>
+          <button class="chai-choco-btn chai-choco-btn-sm">Order Now</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ WHY US ════════════════════════════════ -->
+<section class="chai-choco-bg-void chai-choco-py-24">
+  <div class="chai-choco-container">
+
+    <div class="chai-choco-text-center chai-choco-mb-12">
+      <span class="chai-choco-badge-caramel chai-choco-mb-5">Why Choose Us</span>
+      <h2 class="display chai-choco-text-light chai-choco-font-bold chai-choco-leading-snug" style="font-size:clamp(28px,4vw,48px);">
+        The Chocolate Room Difference
+      </h2>
+    </div>
+
+    <div class="chai-choco-grid-3 chai-choco-gap-5">
+
+      <div class="chai-choco-card chai-choco-text-center chai-choco-hover-glow chai-choco-py-8">
+        <div class="chai-choco-bg-gradient-warm chai-choco-rounded-xl chai-choco-flex-center chai-choco-mb-5"
+             style="width:64px;height:64px;font-size:28px;margin-left:auto;margin-right:auto;">🇧🇪</div>
+        <h3 class="chai-choco-text-light chai-choco-font-bold chai-choco-text-18 chai-choco-mb-3">Authentic Belgian Chocolate</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed">
+          We use only Callebaut Belgian couverture — the gold standard of fine chocolate, trusted by master chocolatiers worldwide.
+        </p>
+      </div>
+
+      <div class="chai-choco-card chai-choco-text-center chai-choco-hover-glow chai-choco-py-8">
+        <div class="chai-choco-bg-gradient-warm chai-choco-rounded-xl chai-choco-flex-center chai-choco-mb-5"
+             style="width:64px;height:64px;font-size:28px;margin-left:auto;margin-right:auto;">👨‍🍳</div>
+        <h3 class="chai-choco-text-light chai-choco-font-bold chai-choco-text-18 chai-choco-mb-3">Made Fresh Daily</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed">
+          No preservatives, no shortcuts. Every brownie, every fondant, every hot chocolate is prepared fresh in our kitchen each morning.
+        </p>
+      </div>
+
+      <div class="chai-choco-card chai-choco-text-center chai-choco-hover-glow chai-choco-py-8">
+        <div class="chai-choco-bg-gradient-warm chai-choco-rounded-xl chai-choco-flex-center chai-choco-mb-5"
+             style="width:64px;height:64px;font-size:28px;margin-left:auto;margin-right:auto;">✨</div>
+        <h3 class="chai-choco-text-light chai-choco-font-bold chai-choco-text-18 chai-choco-mb-3">Luxury Experience</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed">
+          Warm, intimate café ambiance designed for couples, families, and solo indulgers. Every visit is a memory made.
+        </p>
+      </div>
+
+      <div class="chai-choco-card chai-choco-text-center chai-choco-hover-glow chai-choco-py-8">
+        <div class="chai-choco-bg-gradient-warm chai-choco-rounded-xl chai-choco-flex-center chai-choco-mb-5"
+             style="width:64px;height:64px;font-size:28px;margin-left:auto;margin-right:auto;">🎂</div>
+        <h3 class="chai-choco-text-light chai-choco-font-bold chai-choco-text-18 chai-choco-mb-3">Custom Cakes & Gifts</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed">
+          Order custom celebration cakes, chocolate bouquets, and premium gift hampers for any occasion, delivered anywhere.
+        </p>
+      </div>
+
+      <div class="chai-choco-card chai-choco-text-center chai-choco-hover-glow chai-choco-py-8">
+        <div class="chai-choco-bg-gradient-warm chai-choco-rounded-xl chai-choco-flex-center chai-choco-mb-5"
+             style="width:64px;height:64px;font-size:28px;margin-left:auto;margin-right:auto;">🌿</div>
+        <h3 class="chai-choco-text-light chai-choco-font-bold chai-choco-text-18 chai-choco-mb-3">Veg & Eggless Options</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed">
+          70% of our menu is fully vegetarian or eggless — because great chocolate shouldn't have any compromises.
+        </p>
+      </div>
+
+      <div class="chai-choco-card chai-choco-text-center chai-choco-hover-glow chai-choco-py-8">
+        <div class="chai-choco-bg-gradient-warm chai-choco-rounded-xl chai-choco-flex-center chai-choco-mb-5"
+             style="width:64px;height:64px;font-size:28px;margin-left:auto;margin-right:auto;">📱</div>
+        <h3 class="chai-choco-text-light chai-choco-font-bold chai-choco-text-18 chai-choco-mb-3">Order & Deliver</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed">
+          Available on Swiggy, Zomato, and our own app. Get The Chocolate Room experience delivered to your door.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ TESTIMONIALS ══════════════════════════ -->
+<section class="chai-choco-bg-darkest chai-choco-py-24" style="border-top:1px solid rgba(198,134,66,0.1);">
+  <div class="chai-choco-container">
+
+    <div class="chai-choco-text-center chai-choco-mb-12">
+      <span class="chai-choco-badge-caramel chai-choco-mb-5">Customer Love</span>
+      <h2 class="display chai-choco-text-light chai-choco-font-bold" style="font-size:clamp(28px,4vw,44px);">
+        What Our Guests Say
+      </h2>
+    </div>
+
+    <div class="chai-choco-grid-3 chai-choco-gap-5">
+
+      <div class="chai-choco-card chai-choco-hover-lift">
+        <div class="chai-choco-text-gold chai-choco-text-20 chai-choco-mb-4">★★★★★</div>
+        <p class="chai-choco-text-cream chai-choco-text-15 chai-choco-leading-relaxed chai-choco-italic chai-choco-mb-5">
+          "The fondue here is absolutely life-changing. We came for a date night and ended up staying three hours. The atmosphere, the chocolate, the service — perfection."
+        </p>
+        <div class="chai-choco-divider chai-choco-mb-4"></div>
+        <div class="chai-choco-flex-center chai-choco-gap-3" style="justify-content:flex-start;">
+          <div class="chai-choco-avatar chai-choco-text-16">P</div>
+          <div>
+            <div class="chai-choco-text-light chai-choco-font-semibold chai-choco-text-14">Priya Sharma</div>
+            <div class="chai-choco-text-muted chai-choco-text-12">Mumbai · Zomato Review</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chai-choco-card chai-choco-hover-lift chai-choco-shadow-caramel" style="border-color:rgba(198,134,66,0.3);">
+        <div class="chai-choco-text-gold chai-choco-text-20 chai-choco-mb-4">★★★★★</div>
+        <p class="chai-choco-text-cream chai-choco-text-15 chai-choco-leading-relaxed chai-choco-italic chai-choco-mb-5">
+          "The Belgian hot chocolate is hands down the best I've had anywhere in India. Not too sweet, deeply rich, and so comforting. Goes perfectly with the lava cake."
+        </p>
+        <div class="chai-choco-divider chai-choco-mb-4"></div>
+        <div class="chai-choco-flex-center chai-choco-gap-3" style="justify-content:flex-start;">
+          <div class="chai-choco-avatar chai-choco-text-16 chai-choco-bg-gradient-warm">R</div>
+          <div>
+            <div class="chai-choco-text-light chai-choco-font-semibold chai-choco-text-14">Rahul Desai</div>
+            <div class="chai-choco-text-muted chai-choco-text-12">Bangalore · Google Review</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chai-choco-card chai-choco-hover-lift">
+        <div class="chai-choco-text-gold chai-choco-text-20 chai-choco-mb-4">★★★★★</div>
+        <p class="chai-choco-text-cream chai-choco-text-15 chai-choco-leading-relaxed chai-choco-italic chai-choco-mb-5">
+          "Ordered a custom birthday cake — it was a stunning 3-tier dark chocolate beauty. Tasted even better than it looked. Everyone at the party couldn't stop raving about it."
+        </p>
+        <div class="chai-choco-divider chai-choco-mb-4"></div>
+        <div class="chai-choco-flex-center chai-choco-gap-3" style="justify-content:flex-start;">
+          <div class="chai-choco-avatar chai-choco-text-16">A</div>
+          <div>
+            <div class="chai-choco-text-light chai-choco-font-semibold chai-choco-text-14">Ananya Kapoor</div>
+            <div class="chai-choco-text-muted chai-choco-text-12">Delhi · Swiggy Review</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ LOYALTY PROGRAM ═══════════════════════ -->
+<section class="chai-choco-bg-gradient-warm chai-choco-py-20">
+  <div class="chai-choco-container">
+    <div class="chai-choco-grid-2 chai-choco-gap-12" style="align-items:center;">
+
+      <div class="chai-choco-flex-col chai-choco-gap-5">
+        <span class="chai-choco-badge-dark" style="width:fit-content;">Loyalty Programme</span>
+        <h2 class="display chai-choco-text-light chai-choco-font-bold chai-choco-leading-snug" style="font-size:clamp(28px,4vw,44px);">
+          The Choco Club —<br/>Rewards for Real Fans
+        </h2>
+        <p class="chai-choco-text-cream chai-choco-text-16 chai-choco-leading-relaxed">
+          Every purchase earns you Choco Coins. Redeem for free drinks, exclusive desserts, and member-only events. Because our most loyal guests deserve the best.
+        </p>
+        <div class="chai-choco-grid-2 chai-choco-gap-4">
+          <div class="chai-choco-card chai-choco-py-5 chai-choco-text-center">
+            <div style="font-size:28px;margin-bottom:8px;">☕</div>
+            <div class="chai-choco-text-light chai-choco-font-semibold chai-choco-text-14">Free Birthday Drink</div>
+            <div class="chai-choco-text-muted chai-choco-text-12 chai-choco-mt-1">Every year</div>
+          </div>
+          <div class="chai-choco-card chai-choco-py-5 chai-choco-text-center">
+            <div style="font-size:28px;margin-bottom:8px;">🎁</div>
+            <div class="chai-choco-text-light chai-choco-font-semibold chai-choco-text-14">Member Exclusives</div>
+            <div class="chai-choco-text-muted chai-choco-text-12 chai-choco-mt-1">Early access & deals</div>
+          </div>
+          <div class="chai-choco-card chai-choco-py-5 chai-choco-text-center">
+            <div style="font-size:28px;margin-bottom:8px;">🪙</div>
+            <div class="chai-choco-text-light chai-choco-font-semibold chai-choco-text-14">Earn Choco Coins</div>
+            <div class="chai-choco-text-muted chai-choco-text-12 chai-choco-mt-1">₹1 = 1 Coin</div>
+          </div>
+          <div class="chai-choco-card chai-choco-py-5 chai-choco-text-center">
+            <div style="font-size:28px;margin-bottom:8px;">🍩</div>
+            <div class="chai-choco-text-light chai-choco-font-semibold chai-choco-text-14">Free 5th Visit</div>
+            <div class="chai-choco-text-muted chai-choco-text-12 chai-choco-mt-1">Dessert on us</div>
+          </div>
+        </div>
+        <div>
+          <button class="chai-choco-btn chai-choco-btn-lg">Join The Choco Club — Free</button>
+        </div>
+      </div>
+
+      <!-- app download card -->
+      <div class="chai-choco-card chai-choco-rounded-xl chai-choco-shadow-hard chai-choco-text-center chai-choco-py-10">
+        <div style="font-size:72px;margin-bottom:16px;">📱</div>
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-24 chai-choco-mb-3">Download the App</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-6">
+          Order, earn Choco Coins, discover new items, and book your table — all in one app. Available now on iOS and Android.
+        </p>
+        <div class="chai-choco-flex-col chai-choco-gap-3">
+          <button class="chai-choco-btn chai-choco-w-full">
+            <span class="chai-choco-text-18">🍎</span>&nbsp; Download on App Store
+          </button>
+          <button class="chai-choco-btn-outline chai-choco-w-full">
+            <span class="chai-choco-text-18">🤖</span>&nbsp; Get it on Google Play
+          </button>
+        </div>
+        <div class="chai-choco-divider chai-choco-my-5"></div>
+        <div class="chai-choco-flex-center chai-choco-gap-6">
+          <div>
+            <div class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-20 display">4.9★</div>
+            <div class="chai-choco-text-muted chai-choco-text-12">App Store</div>
+          </div>
+          <div>
+            <div class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-20 display">50K+</div>
+            <div class="chai-choco-text-muted chai-choco-text-12">Downloads</div>
+          </div>
+          <div>
+            <div class="chai-choco-text-gold chai-choco-font-bold chai-choco-text-20 display">4.8★</div>
+            <div class="chai-choco-text-muted chai-choco-text-12">Play Store</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ FIND US ════════════════════════════════ -->
+<section id="locations" class="chai-choco-bg-void chai-choco-py-24" style="border-top:1px solid rgba(198,134,66,0.1);">
+  <div class="chai-choco-container">
+
+    <div class="chai-choco-text-center chai-choco-mb-12">
+      <span class="chai-choco-badge-caramel chai-choco-mb-5">Find Us</span>
+      <h2 class="display chai-choco-text-light chai-choco-font-bold" style="font-size:clamp(28px,4vw,44px);">
+        200+ Locations Across India
+      </h2>
+      <p class="chai-choco-text-muted chai-choco-text-16 chai-choco-mt-3">
+        From metro cities to tier-2 towns — a Chocolate Room is never too far away.
+      </p>
+    </div>
+
+    <div class="chai-choco-grid-3 chai-choco-gap-5 chai-choco-mb-10">
+
+      <div class="chai-choco-card chai-choco-hover-lift">
+        <div class="chai-choco-flex-between chai-choco-mb-4">
+          <span class="chai-choco-text-caramel chai-choco-text-24" style="line-height:1;">🏙️</span>
+          <span class="chai-choco-badge-caramel">30+ Outlets</span>
+        </div>
+        <h3 class="chai-choco-text-light chai-choco-font-bold chai-choco-text-18 chai-choco-mb-2">Mumbai</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-4">
+          Bandra, Andheri, Juhu, Powai, Colaba, Lower Parel and more.
+        </p>
+        <button class="chai-choco-btn-ghost chai-choco-btn-sm chai-choco-w-full">Find Nearest Outlet</button>
+      </div>
+
+      <div class="chai-choco-card chai-choco-hover-lift">
+        <div class="chai-choco-flex-between chai-choco-mb-4">
+          <span class="chai-choco-text-caramel chai-choco-text-24" style="line-height:1;">🌆</span>
+          <span class="chai-choco-badge-caramel">25+ Outlets</span>
+        </div>
+        <h3 class="chai-choco-text-light chai-choco-font-bold chai-choco-text-18 chai-choco-mb-2">Bangalore</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-4">
+          Koramangala, Indiranagar, MG Road, Whitefield, HSR Layout and more.
+        </p>
+        <button class="chai-choco-btn-ghost chai-choco-btn-sm chai-choco-w-full">Find Nearest Outlet</button>
+      </div>
+
+      <div class="chai-choco-card chai-choco-hover-lift">
+        <div class="chai-choco-flex-between chai-choco-mb-4">
+          <span class="chai-choco-text-caramel chai-choco-text-24" style="line-height:1;">🏛️</span>
+          <span class="chai-choco-badge-caramel">20+ Outlets</span>
+        </div>
+        <h3 class="chai-choco-text-light chai-choco-font-bold chai-choco-text-18 chai-choco-mb-2">Delhi NCR</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed chai-choco-mb-4">
+          Connaught Place, Lajpat Nagar, Noida, Gurgaon, South Extension and more.
+        </p>
+        <button class="chai-choco-btn-ghost chai-choco-btn-sm chai-choco-w-full">Find Nearest Outlet</button>
+      </div>
+
+    </div>
+
+    <div class="chai-choco-card chai-choco-flex-center chai-choco-gap-8 chai-choco-py-8 chai-choco-flex-wrap chai-choco-text-center">
+      <div>
+        <div class="chai-choco-text-muted chai-choco-text-13 chai-choco-uppercase chai-choco-tracking-wider chai-choco-mb-2">Also In</div>
+        <div class="chai-choco-flex-center chai-choco-gap-3 chai-choco-flex-wrap">
+          <span class="chai-choco-chip">Pune</span>
+          <span class="chai-choco-chip">Hyderabad</span>
+          <span class="chai-choco-chip">Chennai</span>
+          <span class="chai-choco-chip">Ahmedabad</span>
+          <span class="chai-choco-chip">Jaipur</span>
+          <span class="chai-choco-chip">Kolkata</span>
+          <span class="chai-choco-chip">Indore</span>
+          <span class="chai-choco-chip">Surat</span>
+          <span class="chai-choco-chip">Vadodara</span>
+          <span class="chai-choco-chip">Chandigarh</span>
+          <span class="chai-choco-chip">Kochi</span>
+          <span class="chai-choco-chip">Lucknow</span>
+          <span class="chai-choco-chip">+40 more</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ NEWSLETTER ════════════════════════════ -->
+<section id="reservation" class="chai-choco-bg-darkest chai-choco-py-20" style="border-top:1px solid rgba(198,134,66,0.1);">
+  <div class="chai-choco-container">
+    <div class="chai-choco-grid-2 chai-choco-gap-16" style="align-items:center;">
+
+      <div class="chai-choco-flex-col chai-choco-gap-5">
+        <span class="chai-choco-badge-caramel" style="width:fit-content;">Stay in the Loop</span>
+        <h2 class="display chai-choco-text-light chai-choco-font-bold chai-choco-leading-snug" style="font-size:clamp(26px,3.5vw,40px);">
+          Get Exclusive Offers &amp; New Menu Drops
+        </h2>
+        <p class="chai-choco-text-muted chai-choco-text-16 chai-choco-leading-relaxed">
+          Subscribe and get 15% off your next order + early access to seasonal specials, new café openings, and member events.
+        </p>
+        <div class="chai-choco-flex-col chai-choco-gap-3">
+          <div>
+            <label class="chai-choco-label" for="nl-name">Your Name</label>
+            <input class="chai-choco-input" id="nl-name" type="text" placeholder="Enter your name" />
+          </div>
+          <div>
+            <label class="chai-choco-label" for="nl-email">Email Address</label>
+            <input class="chai-choco-input" id="nl-email" type="email" placeholder="you@example.com" />
+          </div>
+          <button class="chai-choco-btn chai-choco-btn-lg chai-choco-w-full chai-choco-mt-2">
+            Get 15% Off — Subscribe Free
+          </button>
+        </div>
+        <p class="chai-choco-text-muted chai-choco-text-12">
+          No spam. Unsubscribe anytime. We hate boring emails too.
+        </p>
+      </div>
+
+      <div class="chai-choco-card-glass chai-choco-rounded-xl chai-choco-p-8 chai-choco-flex-col chai-choco-gap-5">
+        <h3 class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-24 chai-choco-mb-2">Book a Table</h3>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed">
+          Reserve your spot for a special occasion, date night, or a cosy weekend indulgence.
+        </p>
+        <div>
+          <label class="chai-choco-label" for="res-city">City</label>
+          <input class="chai-choco-input" id="res-city" type="text" placeholder="Mumbai, Delhi, Bangalore…" />
+        </div>
+        <div>
+          <label class="chai-choco-label" for="res-date">Date &amp; Time</label>
+          <input class="chai-choco-input" id="res-date" type="datetime-local" />
+        </div>
+        <div>
+          <label class="chai-choco-label" for="res-guests">Number of Guests</label>
+          <input class="chai-choco-input" id="res-guests" type="number" min="1" max="20" placeholder="2" />
+        </div>
+        <button class="chai-choco-btn chai-choco-w-full">Confirm Reservation</button>
+        <p class="chai-choco-text-muted chai-choco-text-12 chai-choco-text-center">
+          Or call us: <span class="chai-choco-text-caramel chai-choco-font-semibold">1800-123-CHOCO</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ FOOTER ════════════════════════════════ -->
+<footer class="chai-choco-bg-void chai-choco-py-16" style="border-top:1px solid rgba(198,134,66,0.12);">
+  <div class="chai-choco-container">
+
+    <!-- top row -->
+    <div class="chai-choco-grid-3 chai-choco-gap-10 chai-choco-mb-12">
+
+      <!-- brand -->
+      <div class="chai-choco-flex-col chai-choco-gap-4">
+        <div class="chai-choco-flex-center chai-choco-gap-3" style="justify-content:flex-start;">
+          <div class="chai-choco-bg-gradient-warm chai-choco-rounded chai-choco-flex-center" style="width:40px;height:40px;font-size:18px;flex-shrink:0;">☕</div>
+          <div>
+            <div class="display chai-choco-text-light chai-choco-font-bold chai-choco-text-18">The Chocolate Room</div>
+            <div class="chai-choco-text-muted chai-choco-text-11 chai-choco-tracking-wider chai-choco-uppercase">Est. 2006</div>
+          </div>
+        </div>
+        <p class="chai-choco-text-muted chai-choco-text-14 chai-choco-leading-relaxed">
+          India's most loved chocolate café. Crafted with authentic Belgian chocolate since 2006.
+        </p>
+        <div class="chai-choco-flex-center chai-choco-gap-3" style="justify-content:flex-start;">
+          <button class="chai-choco-btn-ghost chai-choco-btn-sm" style="padding:8px 10px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </button>
+          <button class="chai-choco-btn-ghost chai-choco-btn-sm" style="padding:8px 10px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </button>
+          <button class="chai-choco-btn-ghost chai-choco-btn-sm" style="padding:8px 10px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.15 8.15 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- quick links -->
+      <div class="chai-choco-flex-col chai-choco-gap-4">
+        <h4 class="chai-choco-text-light chai-choco-font-semibold chai-choco-text-14 chai-choco-uppercase chai-choco-tracking-wider">Quick Links</h4>
+        <div class="chai-choco-flex-col chai-choco-gap-3">
+          <a href="#menu"       class="no-decor chai-choco-text-muted chai-choco-text-14 chai-choco-transition chai-choco-hover-bright">Our Menu</a>
+          <a href="#experience" class="no-decor chai-choco-text-muted chai-choco-text-14 chai-choco-transition chai-choco-hover-bright">Our Story</a>
+          <a href="#specials"   class="no-decor chai-choco-text-muted chai-choco-text-14 chai-choco-transition chai-choco-hover-bright">Seasonal Specials</a>
+          <a href="#locations"  class="no-decor chai-choco-text-muted chai-choco-text-14 chai-choco-transition chai-choco-hover-bright">Find a Location</a>
+          <a href="#"           class="no-decor chai-choco-text-muted chai-choco-text-14 chai-choco-transition chai-choco-hover-bright">Corporate Orders</a>
+          <a href="#"           class="no-decor chai-choco-text-muted chai-choco-text-14 chai-choco-transition chai-choco-hover-bright">Franchise Enquiry</a>
+        </div>
+      </div>
+
+      <!-- contact -->
+      <div class="chai-choco-flex-col chai-choco-gap-4">
+        <h4 class="chai-choco-text-light chai-choco-font-semibold chai-choco-text-14 chai-choco-uppercase chai-choco-tracking-wider">Contact</h4>
+        <div class="chai-choco-flex-col chai-choco-gap-3">
+          <div class="chai-choco-flex-center chai-choco-gap-3" style="justify-content:flex-start;align-items:flex-start;">
+            <span class="chai-choco-text-caramel chai-choco-text-16">📞</span>
+            <div>
+              <div class="chai-choco-text-cream chai-choco-text-14">1800-123-CHOCO</div>
+              <div class="chai-choco-text-muted chai-choco-text-12">Mon–Sun · 9am – 11pm</div>
+            </div>
+          </div>
+          <div class="chai-choco-flex-center chai-choco-gap-3" style="justify-content:flex-start;align-items:flex-start;">
+            <span class="chai-choco-text-caramel chai-choco-text-16">✉️</span>
+            <div>
+              <div class="chai-choco-text-cream chai-choco-text-14">hello@thechocolateroom.in</div>
+              <div class="chai-choco-text-muted chai-choco-text-12">We reply within 24 hours</div>
+            </div>
+          </div>
+          <div class="chai-choco-flex-center chai-choco-gap-3" style="justify-content:flex-start;align-items:flex-start;">
+            <span class="chai-choco-text-caramel chai-choco-text-16">📍</span>
+            <div>
+              <div class="chai-choco-text-cream chai-choco-text-14">200+ locations</div>
+              <div class="chai-choco-text-muted chai-choco-text-12">Across 40+ Indian cities</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="chai-choco-divider chai-choco-mb-6"></div>
+
+    <div class="chai-choco-flex-between chai-choco-flex-wrap chai-choco-gap-4">
+      <p class="chai-choco-text-muted chai-choco-text-13">
+        © 2024 The Chocolate Room. All rights reserved.
+      </p>
+      <div class="chai-choco-flex-center chai-choco-gap-2 chai-choco-text-muted chai-choco-text-13">
+        <span>Advertisement page built with</span>
+        <span class="chai-choco-badge-caramel chai-choco-text-11">Chai Choco</span>
+      </div>
+      <div class="chai-choco-flex-center chai-choco-gap-4">
+        <a href="#" class="no-decor chai-choco-text-muted chai-choco-text-13 chai-choco-transition chai-choco-hover-bright">Privacy Policy</a>
+        <a href="#" class="no-decor chai-choco-text-muted chai-choco-text-13 chai-choco-transition chai-choco-hover-bright">Terms</a>
+        <a href="#" class="no-decor chai-choco-text-muted chai-choco-text-13 chai-choco-transition chai-choco-hover-bright">Sitemap</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ══════════════════════════ FLOATING ORDER BTN ════════════════════ -->
+<a href="#menu" class="no-decor chai-choco-btn chai-choco-shadow-glow chai-choco-glow-pulse"
+   style="position:fixed;bottom:28px;right:28px;z-index:99;border-radius:50px;">
+  🍫 Order Now
+</a>
+
+<!-- DEMO NAV -->
+<div class="demo-nav-bar">
+  <a href="../showcase.html" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Showcase
+  </a>
+  <a href="../components.html" class="comp-link">Components</a>
+</div>
+
+<script type="module" src="../src/index.js"></script>
+</body>
+</html>

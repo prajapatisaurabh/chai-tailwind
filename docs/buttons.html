@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buttons — Chai Choco</title>
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+  <link rel="stylesheet" href="/public/docs-layout.css" />
+</head>
+<body>
+
+<div class="page-layout" id="page-layout">
+  <main class="main" id="main">
+    <div class="main-inner">
+
+      <div class="doc-section">
+        <div class="doc-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="8" rx="2"/></svg>
+          Buttons
+        </div>
+        <div class="doc-section-desc">Three style variants plus three sizes. Includes shimmer hover animation on primary, color-fill on outline, and subtle glass on ghost.</div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Variants</div>
+          <div class="comp-item">
+            <div class="comp-preview">
+              <button class="chai-choco-btn">Primary</button>
+              <button class="chai-choco-btn-outline">Outline</button>
+              <button class="chai-choco-btn-ghost">Ghost</button>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;button</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-btn"</span><span class="c-tag">&gt;</span><span class="c-txt">Primary</span><span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;button</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-btn-outline"</span><span class="c-tag">&gt;</span><span class="c-txt">Outline</span><span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;button</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-btn-ghost"</span><span class="c-tag">&gt;</span><span class="c-txt">Ghost</span><span class="c-tag">&lt;/button&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Sizes</div>
+          <div class="comp-item">
+            <div class="comp-preview" style="gap:10px;align-items:center;">
+              <button class="chai-choco-btn chai-choco-btn-sm">Small</button>
+              <button class="chai-choco-btn">Medium</button>
+              <button class="chai-choco-btn chai-choco-btn-lg">Large</button>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;button</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-btn chai-choco-btn-sm"</span><span class="c-tag">&gt;</span><span class="c-txt">Small</span><span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;button</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-btn"</span><span class="c-tag">&gt;</span><span class="c-txt">Medium</span><span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;button</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-btn chai-choco-btn-lg"</span><span class="c-tag">&gt;</span><span class="c-txt">Large</span><span class="c-tag">&lt;/button&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/public/docs-shell.js"></script>
+</body>
+</html>

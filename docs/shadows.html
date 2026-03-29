@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shadows &amp; Borders — Chai Choco</title>
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+  <link rel="stylesheet" href="/public/docs-layout.css" />
+  <style>
+    .shadow-demo-box {
+      background: var(--rich);
+      border-radius: 12px;
+      padding: 20px 28px;
+      font-size: 13px;
+      color: var(--cream);
+      font-weight: 600;
+      display: inline-block;
+    }
+    .radius-demo-box {
+      background: rgba(198,134,66,0.15);
+      border: 1px solid rgba(198,134,66,0.25);
+      width: 64px;
+      height: 64px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--caramel);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+    .border-demo-box {
+      padding: 14px 22px;
+      font-size: 13px;
+      color: var(--cream);
+      font-weight: 500;
+      display: inline-block;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-layout" id="page-layout">
+  <main class="main" id="main">
+    <div class="main-inner">
+
+      <div class="doc-section">
+        <div class="doc-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M2 8h20"/></svg>
+          Shadows &amp; Borders
+        </div>
+        <div class="doc-section-desc">Five shadow depths, border utilities, and border-radius scale for consistent elevation and shape.</div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Shadows</div>
+          <div class="comp-item">
+            <div class="comp-preview" style="gap:20px;flex-wrap:wrap;align-items:flex-end;">
+              <div>
+                <div class="shadow-demo-box chai-choco-shadow-soft">shadow-soft</div>
+              </div>
+              <div>
+                <div class="shadow-demo-box chai-choco-shadow-md">shadow-md</div>
+              </div>
+              <div>
+                <div class="shadow-demo-box chai-choco-shadow-hard">shadow-hard</div>
+              </div>
+              <div>
+                <div class="shadow-demo-box chai-choco-shadow-caramel">shadow-caramel</div>
+              </div>
+              <div>
+                <div class="shadow-demo-box chai-choco-shadow-glow">shadow-glow</div>
+              </div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-shadow-soft"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-shadow-md"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-shadow-hard"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-shadow-caramel"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-shadow-glow"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Border Radius</div>
+          <div class="comp-item">
+            <div class="comp-preview" style="gap:16px;flex-wrap:wrap;align-items:center;">
+              <div class="radius-demo-box chai-choco-rounded-sm">sm</div>
+              <div class="radius-demo-box chai-choco-rounded">md</div>
+              <div class="radius-demo-box chai-choco-rounded-lg">lg</div>
+              <div class="radius-demo-box chai-choco-rounded-xl">xl</div>
+              <div class="radius-demo-box chai-choco-rounded-2xl">2xl</div>
+              <div class="radius-demo-box chai-choco-rounded-full" style="border-radius:9999px;">full</div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-rounded-sm"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>    <span class="c-cmt">/* 4px   */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-rounded"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>       <span class="c-cmt">/* 8px   */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-rounded-lg"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>    <span class="c-cmt">/* 12px  */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-rounded-xl"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>    <span class="c-cmt">/* 16px  */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-rounded-2xl"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>   <span class="c-cmt">/* 24px  */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-rounded-full"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 9999px */</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Borders</div>
+          <div class="comp-item">
+            <div class="comp-preview" style="gap:16px;flex-wrap:wrap;">
+              <div class="border-demo-box chai-choco-border">border</div>
+              <div class="border-demo-box chai-choco-border-caramel">border-caramel</div>
+              <div class="border-demo-box chai-choco-border-cream">border-cream</div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-border"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-border-caramel"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-border-cream"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/public/docs-shell.js"></script>
+</body>
+</html>

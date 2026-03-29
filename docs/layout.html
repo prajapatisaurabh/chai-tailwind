@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Layout &amp; Grid — Chai Choco</title>
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+  <link rel="stylesheet" href="/public/docs-layout.css" />
+  <style>
+    .grid-cell { background:rgba(198,134,66,0.12); border:1px solid rgba(198,134,66,0.2); border-radius:8px; padding:12px; text-align:center; font-size:12px; color:var(--caramel); font-weight:600; }
+  </style>
+</head>
+<body>
+
+<div class="page-layout" id="page-layout">
+  <main class="main" id="main">
+    <div class="main-inner">
+
+      <div class="doc-section">
+        <div class="doc-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Layout &amp; Grid
+        </div>
+        <div class="doc-section-desc">Flex and grid utilities for building responsive layouts. All grids use a 20px gap by default.</div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Grid Columns</div>
+          <div class="comp-item">
+            <div class="comp-preview col">
+              <div class="chai-choco-grid-2">
+                <div class="grid-cell">col 1</div>
+                <div class="grid-cell">col 2</div>
+              </div>
+              <div class="chai-choco-grid-3">
+                <div class="grid-cell">col 1</div>
+                <div class="grid-cell">col 2</div>
+                <div class="grid-cell">col 3</div>
+              </div>
+              <div class="chai-choco-grid-4">
+                <div class="grid-cell">col 1</div>
+                <div class="grid-cell">col 2</div>
+                <div class="grid-cell">col 3</div>
+                <div class="grid-cell">col 4</div>
+              </div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-grid-2"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 2 col */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-grid-3"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 3 col */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-grid-4"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 4 col */</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Flex Utilities</div>
+          <div class="comp-item">
+            <div class="comp-preview" style="gap:10px;flex-direction:column;align-items:stretch;">
+              <div class="chai-choco-flex-center" style="background:rgba(198,134,66,0.08);border-radius:8px;height:48px;">
+                <span style="font-size:12px;color:var(--caramel);">flex-center</span>
+              </div>
+              <div class="chai-choco-flex-between" style="background:rgba(198,134,66,0.08);border-radius:8px;padding:0 16px;height:48px;">
+                <span style="font-size:12px;color:var(--caramel);">left</span>
+                <span style="font-size:12px;color:var(--caramel);">right</span>
+              </div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-flex-center"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-flex-between"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-flex-col"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-flex-wrap"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/public/docs-shell.js"></script>
+</body>
+</html>

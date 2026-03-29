@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Components — Chai Choco</title>
+  <meta name="description" content="Full reference for every Chai Choco component — live previews, code snippets, all variants." />
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+  <link rel="stylesheet" href="/public/docs-layout.css" />
+</head>
+<body>
+
+<div class="page-layout" id="page-layout">
+  <main class="main" id="main">
+    <div class="main-inner">
+
+      <!-- ═══ OVERVIEW ═══ -->
+      <div class="doc-section" id="getting-started">
+        <div class="doc-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>
+          Getting Started
+        </div>
+        <div class="doc-section-desc">Chai Choco is a zero-setup runtime CSS engine. It scans your HTML for <code style="color:var(--caramel);background:rgba(198,134,66,0.1);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">chai-choco-*</code> classes, generates only the CSS you use, and injects it directly into <code style="color:var(--caramel);background:rgba(198,134,66,0.1);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">&lt;head&gt;</code>. No build step. No config. One import.</div>
+
+        <div class="comp-item">
+          <div class="comp-code-block">
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre class="comp-code"><span class="c-cmt">&lt;!-- CDN — add to &lt;head&gt; --&gt;</span>
+<span class="c-tag">&lt;script</span> <span class="c-attr">src=</span><span class="c-val">"https://unpkg.com/chai-choco-tailwind"</span><span class="c-tag">&gt;&lt;/script&gt;</span>
+
+<span class="c-cmt">// npm</span>
+<span class="c-kw">import</span> <span class="c-val">"chai-choco-tailwind"</span><span class="c-tag">;</span></pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/public/docs-shell.js"></script>
+</body>
+</html>

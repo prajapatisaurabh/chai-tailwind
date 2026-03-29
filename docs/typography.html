@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typography — Chai Choco</title>
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+  <link rel="stylesheet" href="/public/docs-layout.css" />
+</head>
+<body>
+
+<div class="page-layout" id="page-layout">
+  <main class="main" id="main">
+    <div class="main-inner">
+
+      <div class="doc-section">
+        <div class="doc-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          Typography
+        </div>
+        <div class="doc-section-desc">Font weight, letter spacing, and line height utilities. Combine freely for expressive text styling.</div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Font Weights</div>
+          <div class="comp-item">
+            <div class="comp-preview col" style="align-items:flex-start;gap:6px;">
+              <div class="chai-choco-font-black" style="font-size:18px;">Black 900 — The richest blend</div>
+              <div class="chai-choco-font-extrabold" style="font-size:18px;">ExtraBold 800 — The richest blend</div>
+              <div class="chai-choco-font-bold" style="font-size:18px;">Bold 700 — The richest blend</div>
+              <div class="chai-choco-font-semibold" style="font-size:18px;">SemiBold 600 — The richest blend</div>
+              <div class="chai-choco-font-medium" style="font-size:18px;">Medium 500 — The richest blend</div>
+              <div class="chai-choco-font-normal" style="font-size:18px;">Normal 400 — The richest blend</div>
+              <div class="chai-choco-font-light" style="font-size:18px;">Light 300 — The richest blend</div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-font-black"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>     <span class="c-cmt">/* 900 */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-font-extrabold"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 800 */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-font-bold"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>      <span class="c-cmt">/* 700 */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-font-semibold"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>   <span class="c-cmt">/* 600 */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-font-medium"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>    <span class="c-cmt">/* 500 */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-font-normal"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>    <span class="c-cmt">/* 400 */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-font-light"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>     <span class="c-cmt">/* 300 */</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Letter Spacing</div>
+          <div class="comp-item">
+            <div class="comp-preview col" style="align-items:flex-start;gap:6px;">
+              <div class="chai-choco-tracking-tightest" style="font-size:15px;">Tightest — −0.06em</div>
+              <div class="chai-choco-tracking-tight" style="font-size:15px;">Tight — −0.03em</div>
+              <div class="chai-choco-tracking-normal" style="font-size:15px;">Normal — 0</div>
+              <div class="chai-choco-tracking-wide" style="font-size:15px;">Wide — 0.08em</div>
+              <div class="chai-choco-tracking-wider" style="font-size:15px;">Wider — 0.15em</div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-tracking-tightest"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-tracking-tight"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-tracking-wide"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-tracking-wider"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Line Height</div>
+          <div class="comp-item">
+            <div class="comp-preview col" style="align-items:flex-start;gap:14px;">
+              <div class="chai-choco-leading-none" style="font-size:13px;max-width:260px;">None (1.0) — Chai Choco is a zero-setup runtime CSS engine. Add classes and go.</div>
+              <div class="chai-choco-leading-tight" style="font-size:13px;max-width:260px;">Tight (1.15) — Chai Choco is a zero-setup runtime CSS engine. Add classes and go.</div>
+              <div class="chai-choco-leading-normal" style="font-size:13px;max-width:260px;">Normal (1.5) — Chai Choco is a zero-setup runtime CSS engine. Add classes and go.</div>
+              <div class="chai-choco-leading-relaxed" style="font-size:13px;max-width:260px;">Relaxed (1.7) — Chai Choco is a zero-setup runtime CSS engine. Add classes and go.</div>
+              <div class="chai-choco-leading-loose" style="font-size:13px;max-width:260px;">Loose (2.0) — Chai Choco is a zero-setup runtime CSS engine. Add classes and go.</div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-leading-none"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>     <span class="c-cmt">/* 1.0 */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-leading-tight"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>    <span class="c-cmt">/* 1.15 */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-leading-normal"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>   <span class="c-cmt">/* 1.5 */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-leading-relaxed"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span> <span class="c-cmt">/* 1.7 */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-leading-loose"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>    <span class="c-cmt">/* 2.0 */</span></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/public/docs-shell.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hover &amp; Transitions — Chai Choco</title>
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+  <link rel="stylesheet" href="/public/docs-layout.css" />
+  <style>
+    .hover-demo-box {
+      background: var(--rich);
+      border: 1px solid rgba(198,134,66,0.2);
+      border-radius: 12px;
+      padding: 18px 24px;
+      font-size: 13px;
+      color: var(--cream);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-block;
+      min-width: 140px;
+      text-align: center;
+    }
+    .transition-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .transition-label {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      min-width: 150px;
+    }
+    .transition-demo {
+      width: 48px;
+      height: 48px;
+      background: rgba(198,134,66,0.18);
+      border: 1px solid rgba(198,134,66,0.3);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-layout" id="page-layout">
+  <main class="main" id="main">
+    <div class="main-inner">
+
+      <div class="doc-section">
+        <div class="doc-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          Hover &amp; Transitions
+        </div>
+        <div class="doc-section-desc">Hover effects and CSS transition utilities. Hover over the demo elements to see them in action.</div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Hover Effects</div>
+          <div class="comp-item">
+            <div class="comp-preview" style="gap:16px;flex-wrap:wrap;">
+              <div class="hover-demo-box chai-choco-hover-lift">hover-lift</div>
+              <div class="hover-demo-box chai-choco-hover-scale">hover-scale</div>
+              <div class="hover-demo-box chai-choco-hover-glow">hover-glow</div>
+              <div class="hover-demo-box chai-choco-hover-bright">hover-bright</div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-hover-lift"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>    <span class="c-cmt">/* translateY(-3px) */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-hover-scale"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>   <span class="c-cmt">/* scale(1.03) */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-hover-glow"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>    <span class="c-cmt">/* caramel box-shadow */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-hover-bright"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* brightness(1.1) */</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Transitions</div>
+          <div class="comp-item">
+            <div class="comp-preview col" style="align-items:flex-start;gap:12px;">
+              <div class="transition-row">
+                <span class="transition-label">transition-fast</span>
+                <div class="transition-demo chai-choco-transition-fast chai-choco-hover-scale"></div>
+                <span style="font-size:11px;color:var(--muted);">150ms ease-out</span>
+              </div>
+              <div class="transition-row">
+                <span class="transition-label">transition</span>
+                <div class="transition-demo chai-choco-transition chai-choco-hover-scale"></div>
+                <span style="font-size:11px;color:var(--muted);">250ms ease-out</span>
+              </div>
+              <div class="transition-row">
+                <span class="transition-label">transition-slow</span>
+                <div class="transition-demo chai-choco-transition-slow chai-choco-hover-scale"></div>
+                <span style="font-size:11px;color:var(--muted);">400ms ease-out</span>
+              </div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-cmt">/* Combine with hover effects */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-transition-fast chai-choco-hover-lift"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-transition chai-choco-hover-scale"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-transition-slow chai-choco-hover-glow"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/public/docs-shell.js"></script>
+</body>
+</html>

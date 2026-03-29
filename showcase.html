@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Showcase — Chai Choco</title>
+  <meta name="description" content="Full production pages built using only chai-choco classes. Explore real-world demos of the Instant UI Engine." />
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+
+  <style>
+    body {
+      background: var(--void);
+      color: var(--light);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      display: flex;
+      flex: 1;
+      height: calc(100dvh - 56px);
+      overflow: hidden;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 260px;
+      flex-shrink: 0;
+      background: rgba(44,24,16,0.4);
+      border-right: 1px solid rgba(198,134,66,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(198,134,66,0.2) transparent;
+    }
+    .sidebar-header {
+      padding: 20px 16px 12px;
+      border-bottom: 1px solid rgba(198,134,66,0.08);
+    }
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .sidebar-count {
+      font-size: 13px;
+      color: var(--cream);
+      font-weight: 500;
+    }
+    .sidebar-list { padding: 10px 8px; flex: 1; }
+    .demo-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 10px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+      margin-bottom: 2px;
+      font-family: inherit;
+    }
+    .demo-item:hover { background: rgba(74,37,21,0.4); border-color: rgba(198,134,66,0.12); }
+    .demo-item.active {
+      background: rgba(74,37,21,0.6);
+      border-color: rgba(198,134,66,0.35);
+      box-shadow: 0 0 16px rgba(198,134,66,0.07);
+    }
+    .demo-item-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      background: rgba(44,24,16,0.6);
+    }
+    .demo-item.active .demo-item-icon { background: rgba(198,134,66,0.15); }
+    .demo-item-info { min-width: 0; }
+    .demo-item-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cream);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .demo-item.active .demo-item-name { color: var(--caramel); }
+    .demo-item-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+    .demo-item.active .demo-item-tag { color: var(--gold); opacity: 0.8; }
+    .demo-item-active-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--caramel);
+      margin-left: auto;
+      flex-shrink: 0;
+      display: none;
+    }
+    .demo-item.active .demo-item-active-dot { display: block; }
+
+    /* add more hint */
+    .sidebar-add-hint {
+      margin: 8px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px dashed rgba(198,134,66,0.2);
+      background: rgba(198,134,66,0.04);
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .sidebar-add-hint code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--caramel);
+      background: rgba(198,134,66,0.1);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    /* ── PREVIEW AREA ── */
+    .preview-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* browser chrome */
+    .browser-chrome {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      background: var(--darkest);
+      border-bottom: 1px solid rgba(198,134,66,0.1);
+      flex-shrink: 0;
+    }
+    .bc-dots { display: flex; gap: 6px; }
+    .bc-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .bc-url-bar {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      height: 30px;
+      padding: 0 12px;
+      border-radius: 7px;
+      background: rgba(26,10,0,0.6);
+      border: 1px solid rgba(198,134,66,0.1);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .bc-url-bar svg { flex-shrink: 0; opacity: 0.6; }
+    #bc-url-text { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .bc-actions { display: flex; gap: 8px; }
+    .bc-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .bc-btn-open {
+      background: rgba(198,134,66,0.15);
+      color: var(--caramel);
+      border: 1px solid rgba(198,134,66,0.25);
+    }
+    .bc-btn-open:hover { background: rgba(198,134,66,0.25); }
+
+    /* iframe */
+    .iframe-wrap {
+      flex: 1;
+      position: relative;
+      background: var(--void);
+    }
+    #preview-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .iframe-loader {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: var(--void);
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .iframe-loader.hidden { opacity: 0; }
+    .loader-ring {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid rgba(198,134,66,0.15);
+      border-top-color: var(--caramel);
+      animation: spin 0.7s linear infinite;
+    }
+    .loader-label { font-size: 13px; color: var(--muted); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── MOBILE DEMO TABS ── */
+    .mobile-demo-tabs {
+      display: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 8px;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(198,134,66,0.12);
+      background: rgba(26,10,0,0.7);
+      flex-shrink: 0;
+    }
+    .mobile-demo-tabs::-webkit-scrollbar { display: none; }
+    .mobile-tab {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(198,134,66,0.18);
+      background: rgba(44,24,16,0.5);
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .mobile-tab:hover { color: var(--cream); border-color: rgba(198,134,66,0.35); }
+    .mobile-tab.active {
+      background: rgba(198,134,66,0.18);
+      border-color: rgba(198,134,66,0.55);
+      color: var(--caramel);
+    }
+    .mobile-tab-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--caramel); display: none; flex-shrink: 0;
+    }
+    .mobile-tab.active .mobile-tab-dot { display: block; }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .mobile-demo-tabs { display: flex; }
+      .preview-area { flex: 1; }
+      .page-body { flex-direction: column; height: auto; }
+      .iframe-wrap { height: calc(100dvh - 56px - 50px - 44px); }
+      .bc-url-bar { display: none; }
+      .browser-chrome { gap: 8px; padding: 8px 12px; }
+    }
+    @media (max-width: 480px) {
+      .bc-btn-open .bc-btn-text { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title">Demo Pages</div>
+      <div class="sidebar-count" id="demo-count">4 demos</div>
+    </div>
+
+    <nav class="sidebar-list" id="demo-list">
+
+      <button class="demo-item active" onclick="switchDemo(0, this)">
+        <div class="demo-item-icon">🍫</div>
+        <div class="demo-item-info">
+          <div class="demo-item-name">Chocolate Brand</div>
+          <div class="demo-item-tag">Brand Landing</div>
+        </div>
+        <div class="demo-item-active-dot"></div>
+      </button>
+
+      <button class="demo-item" onclick="switchDemo(1, this)">
+        <div class="demo-item-icon">🛍️</div>
+        <div class="demo-item-info">
+          <div class="demo-item-name">E-commerce Shop</div>
+          <div class="demo-item-tag">Online Store</div>
+        </div>
+        <div class="demo-item-active-dot"></div>
+      </button>
+
+      <button class="demo-item" onclick="switchDemo(2, this)">
+        <div class="demo-item-icon">🚀</div>
+        <div class="demo-item-info">
+          <div class="demo-item-name">Startup Landing</div>
+          <div class="demo-item-tag">SaaS / Product</div>
+        </div>
+        <div class="demo-item-active-dot"></div>
+      </button>
+
+      <button class="demo-item" onclick="switchDemo(3, this)">
+        <div class="demo-item-icon">☕</div>
+        <div class="demo-item-info">
+          <div class="demo-item-name">The Chocolate Room</div>
+          <div class="demo-item-tag">Ad / Campaign</div>
+        </div>
+        <div class="demo-item-active-dot"></div>
+      </button>
+
+      <!-- ↓ Add more demo items here ↓ -->
+
+    </nav>
+
+    <div class="sidebar-add-hint">
+      To add a demo: add a <code>&lt;button&gt;</code> above and push its entry to <code>DEMOS</code> in the script.
+    </div>
+  </aside>
+
+  <!-- PREVIEW AREA -->
+  <div class="preview-area">
+
+    <!-- Mobile pill tabs -->
+    <div class="mobile-demo-tabs" id="mobile-demo-tabs">
+      <button class="mobile-tab active" onclick="switchDemo(0, null)" data-tab="0">
+        <div class="mobile-tab-dot"></div>Chocolate Brand
+      </button>
+      <button class="mobile-tab" onclick="switchDemo(1, null)" data-tab="1">
+        <div class="mobile-tab-dot"></div>E-commerce
+      </button>
+      <button class="mobile-tab" onclick="switchDemo(2, null)" data-tab="2">
+        <div class="mobile-tab-dot"></div>Startup
+      </button>
+      <button class="mobile-tab" onclick="switchDemo(3, null)" data-tab="3">
+        <div class="mobile-tab-dot"></div>Choco Room
+      </button>
+    </div>
+
+    <!-- Browser chrome -->
+    <div class="browser-chrome">
+      <div class="bc-dots">
+        <div class="bc-dot" style="background:#FF5F57;"></div>
+        <div class="bc-dot" style="background:#FFBD2E;"></div>
+        <div class="bc-dot" style="background:#28CA41;"></div>
+      </div>
+      <div class="bc-url-bar">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <span id="bc-url-text">demos/chocolate-brand.html</span>
+      </div>
+      <div class="bc-actions">
+        <a id="bc-open-link" href="demos/chocolate-brand.html" target="_blank" rel="noopener noreferrer" class="bc-btn bc-btn-open">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span class="bc-btn-text">Open in new tab</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- iframe -->
+    <div class="iframe-wrap">
+      <div class="iframe-loader" id="iframe-loader">
+        <div class="loader-ring"></div>
+        <div class="loader-label">Loading demo…</div>
+      </div>
+      <iframe id="preview-iframe"
+              src="demos/chocolate-brand.html"
+              title="Demo preview"
+              onload="document.getElementById('iframe-loader').classList.add('hidden')">
+      </iframe>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const DEMOS = [
+    { url: 'demos/chocolate-brand.html',    label: 'demos/chocolate-brand.html' },
+    { url: 'demos/ecommerce.html',          label: 'demos/ecommerce.html' },
+    { url: 'demos/startup.html',            label: 'demos/startup.html' },
+    { url: 'demos/the-chocolate-room.html', label: 'demos/the-chocolate-room.html' },
+  ];
+
+  function switchDemo(index, btn) {
+    index = Number(index);
+    const demo   = DEMOS[index];
+    const iframe = document.getElementById('preview-iframe');
+    const loader = document.getElementById('iframe-loader');
+    const urlTxt = document.getElementById('bc-url-text');
+    const openLk = document.getElementById('bc-open-link');
+
+    loader.classList.remove('hidden');
+    iframe.src    = demo.url;
+    urlTxt.textContent = demo.label;
+    openLk.href   = demo.url;
+
+    // update sidebar active state
+    document.querySelectorAll('.demo-item').forEach((b, i) => {
+      b.classList.toggle('active', i === index);
+    });
+
+    // sync mobile pill tabs
+    document.querySelectorAll('.mobile-tab').forEach((t) => {
+      t.classList.toggle('active', Number(t.dataset.tab) === index);
+    });
+  }
+
+  // deep-link: showcase.html?demo=2
+  const params = new URLSearchParams(location.search);
+  const initial = parseInt(params.get('demo'), 10);
+  if (!isNaN(initial) && initial >= 0 && initial < DEMOS.length) {
+    const btn = document.querySelectorAll('.demo-item')[initial];
+    switchDemo(initial, btn);
+  }
+</script>
+
+<script src="/public/site-header.js"></script>
+</body>
+</html>

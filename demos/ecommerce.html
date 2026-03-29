@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choco Shop — Premium Chocolates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:#F5E6D3;color:#2C1810;overflow-x:hidden;}
+    .demo-nav-bar{position:fixed;top:16px;left:16px;z-index:100;display:flex;align-items:center;gap:6px;}
+    .back-link,.comp-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;backdrop-filter:blur(8px);text-decoration:none;font-size:13px;font-weight:600;transition:all .2s;}
+    .back-link{background:rgba(44,24,16,0.9);border:1px solid rgba(198,134,66,0.3);color:#C68642;}
+    .back-link:hover{background:#2C1810;}
+    .comp-link{background:rgba(44,24,16,0.6);border:1px solid rgba(198,134,66,0.1);color:#A0785A;}
+    .comp-link:hover{background:rgba(44,24,16,0.9);color:#C68642;border-color:rgba(198,134,66,0.3);}
+    .topnav{position:sticky;top:0;z-index:50;background:rgba(245,230,211,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(44,24,16,0.1);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+  </style>
+</head>
+<body>
+
+<div class="demo-nav-bar">
+  <a href="../showcase.html" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Showcase
+  </a>
+  <a href="../components.html" class="comp-link">Components</a>
+</div>
+
+<!-- NAV -->
+<nav class="topnav">
+  <div style="font-weight:800;font-size:18px;color:#2C1810;letter-spacing:-0.3px;">Choco Shop</div>
+  <div style="display:flex;gap:24px;align-items:center;">
+    <span style="font-size:14px;color:#7B4A2D;font-weight:500;cursor:pointer;">Shop</span>
+    <span style="font-size:14px;color:#7B4A2D;font-weight:500;cursor:pointer;">Collections</span>
+    <span style="font-size:14px;color:#7B4A2D;font-weight:500;cursor:pointer;">About</span>
+    <button class="chai-choco-btn chai-choco-btn-sm">Cart (0)</button>
+  </div>
+</nav>
+
+<!-- HERO BANNER -->
+<div style="background:linear-gradient(135deg,#2C1810,#4A2515);padding:40px 24px;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 100% at 50% 100%,rgba(198,134,66,0.15),transparent);pointer-events:none;"></div>
+  <span class="chai-choco-badge-caramel" style="display:inline-flex;margin-bottom:14px;">Limited Time — 30% Off All Dark Chocolates</span>
+  <h1 style="font-size:clamp(28px,4vw,48px);font-weight:900;color:#FFF8F0;letter-spacing:-1px;margin-bottom:12px;">Indulge in the Finest<br/>Artisan Chocolates</h1>
+  <p style="color:#A0785A;font-size:16px;margin-bottom:20px;">Free shipping on orders over $40</p>
+  <button class="chai-choco-btn chai-choco-btn-lg">Shop the Sale</button>
+</div>
+
+<!-- CATEGORY STRIP -->
+<div style="padding:20px 24px;background:#EDD9BB;border-bottom:1px solid rgba(44,24,16,0.08);">
+  <div class="container" style="display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+    <button class="chai-choco-btn chai-choco-btn-sm">All</button>
+    <button class="chai-choco-btn-outline chai-choco-btn-sm">Dark</button>
+    <button class="chai-choco-btn-outline chai-choco-btn-sm">Milk</button>
+    <button class="chai-choco-btn-outline chai-choco-btn-sm">White</button>
+    <button class="chai-choco-btn-outline chai-choco-btn-sm">Caramel</button>
+    <button class="chai-choco-btn-outline chai-choco-btn-sm">Gift Sets</button>
+    <button class="chai-choco-btn-outline chai-choco-btn-sm">Seasonal</button>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section style="padding:48px 24px;">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px;">
+      <h2 style="font-size:22px;font-weight:800;color:#2C1810;">Featured Products</h2>
+      <span style="font-size:13px;color:#7B4A2D;font-weight:500;">24 products</span>
+    </div>
+    <div class="chai-choco-grid-3" style="gap:20px;">
+
+      <!-- Product 1 -->
+      <div class="chai-choco-card-cream chai-choco-hover-lift" style="padding:0;overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#3D1F10,#2C1810);padding:28px;text-align:center;">
+          <div style="font-size:56px;margin-bottom:4px;">🍫</div>
+          <span class="chai-choco-badge" style="display:inline-flex;background:#1a0a00;color:#C68642;border:1px solid rgba(198,134,66,0.2);">30% OFF</span>
+        </div>
+        <div style="padding:20px;">
+          <div style="font-size:11px;font-weight:600;color:#A0785A;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Dark Chocolate</div>
+          <div style="font-weight:700;font-size:16px;color:#2C1810;margin-bottom:6px;">Obsidian 85% Cacao</div>
+          <div style="font-size:13px;color:#7B4A2D;margin-bottom:14px;line-height:1.5;">Single-origin, stone-ground. Bold and complex with notes of cherry.</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+            <span style="font-size:20px;font-weight:800;color:#2C1810;">$11.89</span>
+            <span style="font-size:14px;color:#A0785A;text-decoration:line-through;">$16.99</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="chai-choco-btn" style="flex:1;">Add to Cart</button>
+            <button class="chai-choco-btn-outline" style="padding:10px 12px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="chai-choco-card-cream chai-choco-hover-lift" style="padding:0;overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#7B4A2D,#C68642);padding:28px;text-align:center;">
+          <div style="font-size:56px;margin-bottom:4px;">🍬</div>
+          <span class="chai-choco-badge-cream" style="display:inline-flex;">Bestseller</span>
+        </div>
+        <div style="padding:20px;">
+          <div style="font-size:11px;font-weight:600;color:#A0785A;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Caramel</div>
+          <div style="font-weight:700;font-size:16px;color:#2C1810;margin-bottom:6px;">Fleur de Sel Caramel</div>
+          <div style="font-size:13px;color:#7B4A2D;margin-bottom:14px;line-height:1.5;">Soft caramel with hand-harvested sea salt and dark chocolate shell.</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+            <span style="font-size:20px;font-weight:800;color:#2C1810;">$14.99</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="chai-choco-btn" style="flex:1;">Add to Cart</button>
+            <button class="chai-choco-btn-outline" style="padding:10px 12px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="chai-choco-card-cream chai-choco-hover-lift" style="padding:0;overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#4A2515,#8B5E3C);padding:28px;text-align:center;">
+          <div style="font-size:56px;margin-bottom:4px;">🎁</div>
+          <span class="chai-choco-badge-caramel" style="display:inline-flex;">Gift Set</span>
+        </div>
+        <div style="padding:20px;">
+          <div style="font-size:11px;font-weight:600;color:#A0785A;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Gift Collection</div>
+          <div style="font-weight:700;font-size:16px;color:#2C1810;margin-bottom:6px;">Premium Tasting Box</div>
+          <div style="font-size:13px;color:#7B4A2D;margin-bottom:14px;line-height:1.5;">12 hand-selected truffles in a luxury keepsake box. Perfect gifting.</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+            <span style="font-size:20px;font-weight:800;color:#2C1810;">$38.99</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="chai-choco-btn" style="flex:1;">Add to Cart</button>
+            <button class="chai-choco-btn-outline" style="padding:10px 12px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section style="padding:40px 24px;background:#EDD9BB;border-top:1px solid rgba(44,24,16,0.1);">
+  <div class="container" style="text-align:center;">
+    <h3 style="font-size:20px;font-weight:800;color:#2C1810;margin-bottom:24px;">Why Customers Love Us</h3>
+    <div class="chai-choco-grid-3" style="gap:20px;">
+      <div class="chai-choco-card-cream" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;color:#C68642;">★★★★★</div>
+        <div style="font-size:14px;color:#2C1810;font-weight:600;margin-bottom:6px;">"Absolutely divine"</div>
+        <div style="font-size:13px;color:#7B4A2D;">"The best chocolate I've ever tasted. Ships beautifully too." — Sarah M.</div>
+      </div>
+      <div class="chai-choco-card-cream" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;color:#C68642;">★★★★★</div>
+        <div style="font-size:14px;color:#2C1810;font-weight:600;margin-bottom:6px;">"Perfect gift"</div>
+        <div style="font-size:13px;color:#7B4A2D;">"Ordered the tasting box for my partner — it was a huge hit." — James K.</div>
+      </div>
+      <div class="chai-choco-card-cream" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:8px;color:#C68642;">★★★★★</div>
+        <div style="font-size:14px;color:#2C1810;font-weight:600;margin-bottom:6px;">"Will reorder"</div>
+        <div style="font-size:13px;color:#7B4A2D;">"The 85% dark is addictive. Nothing else compares." — Priya L.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section style="padding:60px 24px;background:linear-gradient(135deg,#2C1810,#4A2515);text-align:center;">
+  <span class="chai-choco-badge-caramel" style="display:inline-flex;margin-bottom:16px;">Newsletter</span>
+  <h2 style="font-size:28px;font-weight:800;color:#FFF8F0;margin-bottom:10px;">Get 10% off your first order</h2>
+  <p style="color:#A0785A;margin-bottom:24px;">Join our community and receive exclusive offers, new arrivals, and chocolate stories.</p>
+  <div style="display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center;">
+    <input class="chai-choco-input" type="email" placeholder="your@email.com" style="flex:1;min-width:220px;"/>
+    <button class="chai-choco-btn">Subscribe</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:32px 24px;background:#1a0a00;border-top:1px solid rgba(198,134,66,0.1);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+    <div style="font-weight:700;color:#C68642;font-size:16px;">Choco Shop</div>
+    <div style="color:#7B4A2D;font-size:13px;">Built with Chai Choco &middot; MIT License</div>
+  </div>
+</footer>
+
+<script type="module" src="../src/index.js"></script>
+</body>
+</html>

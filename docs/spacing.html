@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spacing — Chai Choco</title>
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+  <link rel="stylesheet" href="/public/docs-layout.css" />
+  <style>
+    .spacing-box { background: rgba(198,134,66,0.12); border: 1px solid rgba(198,134,66,0.25); border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; color: var(--caramel); font-weight: 600; font-family: 'JetBrains Mono', monospace; min-width: 28px; min-height: 28px; }
+    .spacing-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .spacing-label { font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; min-width: 110px; }
+    .gap-demo { display: flex; }
+    .gap-child { background: rgba(198,134,66,0.18); border: 1px solid rgba(198,134,66,0.3); border-radius: 6px; padding: 8px 14px; font-size: 12px; color: var(--caramel); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<div class="page-layout" id="page-layout">
+  <main class="main" id="main">
+    <div class="main-inner">
+
+      <div class="doc-section">
+        <div class="doc-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 3H3"/><path d="M21 21H3"/><path d="M12 7v10"/><path d="M8 10l4-3 4 3"/><path d="M8 14l4 3 4-3"/></svg>
+          Spacing
+        </div>
+        <div class="doc-section-desc">Dynamic padding, margin, and gap utilities. All values use a <strong style="color:var(--caramel);">4px base unit</strong> — so <code style="color:var(--caramel);background:rgba(198,134,66,0.1);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">n=4</code> means <code style="color:var(--caramel);background:rgba(198,134,66,0.1);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">16px</code>.</div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Padding — chai-choco-p-{n}</div>
+          <div class="comp-item">
+            <div class="comp-preview col" style="align-items:flex-start;gap:10px;">
+              <div class="spacing-row">
+                <span class="spacing-label">p-1 → 4px</span>
+                <div class="spacing-box chai-choco-p-1">p-1</div>
+              </div>
+              <div class="spacing-row">
+                <span class="spacing-label">p-2 → 8px</span>
+                <div class="spacing-box chai-choco-p-2">p-2</div>
+              </div>
+              <div class="spacing-row">
+                <span class="spacing-label">p-4 → 16px</span>
+                <div class="spacing-box chai-choco-p-4">p-4</div>
+              </div>
+              <div class="spacing-row">
+                <span class="spacing-label">p-6 → 24px</span>
+                <div class="spacing-box chai-choco-p-6">p-6</div>
+              </div>
+              <div class="spacing-row">
+                <span class="spacing-label">p-8 → 32px</span>
+                <div class="spacing-box chai-choco-p-8">p-8</div>
+              </div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-cmt">/* padding: n × 4px */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-p-1"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 4px  */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-p-2"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 8px  */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-p-4"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 16px */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-p-6"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 24px */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-p-8"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 32px */</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Horizontal &amp; Vertical Padding</div>
+          <div class="comp-item">
+            <div class="comp-preview col" style="align-items:flex-start;gap:10px;">
+              <div class="spacing-row">
+                <span class="spacing-label">px-4 → 16px LR</span>
+                <div class="spacing-box chai-choco-px-4">px-4</div>
+              </div>
+              <div class="spacing-row">
+                <span class="spacing-label">px-6 → 24px LR</span>
+                <div class="spacing-box chai-choco-px-6">px-6</div>
+              </div>
+              <div class="spacing-row">
+                <span class="spacing-label">py-2 → 8px TB</span>
+                <div class="spacing-box chai-choco-py-2">py-2</div>
+              </div>
+              <div class="spacing-row">
+                <span class="spacing-label">py-4 → 16px TB</span>
+                <div class="spacing-box chai-choco-py-4">py-4</div>
+              </div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-cmt">/* padding-left + padding-right */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-px-4"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 16px */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-px-6"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 24px */</span>
+
+<span class="c-cmt">/* padding-top + padding-bottom */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-py-2"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 8px  */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-py-4"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 16px */</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Margin — chai-choco-m-{n}</div>
+          <div class="comp-item">
+            <div class="comp-preview col" style="align-items:flex-start;gap:10px;">
+              <div class="spacing-row">
+                <span class="spacing-label">m-1 → 4px</span>
+                <div class="spacing-box chai-choco-m-1">m-1</div>
+              </div>
+              <div class="spacing-row">
+                <span class="spacing-label">m-2 → 8px</span>
+                <div class="spacing-box chai-choco-m-2">m-2</div>
+              </div>
+              <div class="spacing-row">
+                <span class="spacing-label">mx-4 → 16px LR</span>
+                <div class="spacing-box chai-choco-mx-4">mx-4</div>
+              </div>
+              <div class="spacing-row">
+                <span class="spacing-label">my-4 → 16px TB</span>
+                <div class="spacing-box chai-choco-my-4">my-4</div>
+              </div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-cmt">/* margin: n × 4px */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-m-1"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>   <span class="c-cmt">/* 4px  */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-m-2"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>   <span class="c-cmt">/* 8px  */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-mx-4"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 16px LR */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-my-4"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>  <span class="c-cmt">/* 16px TB */</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Gap — chai-choco-gap-{n}</div>
+          <div class="comp-item">
+            <div class="comp-preview col" style="align-items:flex-start;gap:14px;">
+              <div>
+                <div style="font-size:11px;color:var(--muted);margin-bottom:6px;font-family:'JetBrains Mono',monospace;">gap-2 → 8px</div>
+                <div class="gap-demo chai-choco-gap-2">
+                  <div class="gap-child">A</div>
+                  <div class="gap-child">B</div>
+                  <div class="gap-child">C</div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--muted);margin-bottom:6px;font-family:'JetBrains Mono',monospace;">gap-4 → 16px</div>
+                <div class="gap-demo chai-choco-gap-4">
+                  <div class="gap-child">A</div>
+                  <div class="gap-child">B</div>
+                  <div class="gap-child">C</div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--muted);margin-bottom:6px;font-family:'JetBrains Mono',monospace;">gap-6 → 24px</div>
+                <div class="gap-demo chai-choco-gap-6">
+                  <div class="gap-child">A</div>
+                  <div class="gap-child">B</div>
+                  <div class="gap-child">C</div>
+                </div>
+              </div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-cmt">/* gap: n × 4px — use with flex or grid */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-flex-center chai-choco-gap-2"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-grid-3 chai-choco-gap-4"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-flex-wrap chai-choco-gap-6"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/public/docs-shell.js"></script>
+</body>
+</html>

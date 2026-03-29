@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colors — Chai Choco</title>
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+  <link rel="stylesheet" href="/public/docs-layout.css" />
+</head>
+<body>
+
+<div class="page-layout" id="page-layout">
+  <main class="main" id="main">
+    <div class="main-inner">
+
+      <div class="doc-section">
+        <div class="doc-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 010 20"/></svg>
+          Colors
+        </div>
+        <div class="doc-section-desc">The complete chocolate palette. Use <code style="color:var(--caramel);background:rgba(198,134,66,0.1);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">chai-choco-bg-*</code> for backgrounds and <code style="color:var(--caramel);background:rgba(198,134,66,0.1);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">chai-choco-text-*</code> for text.</div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Palette</div>
+          <div class="comp-item">
+            <div class="comp-preview" style="padding:20px;">
+              <div class="palette-grid" style="width:100%;">
+                <div class="swatch"><div class="swatch-color" style="background:#1a0a00;"></div><div class="swatch-info"><div class="swatch-name">Void</div><div class="swatch-hex">#1a0a00</div><div class="swatch-class">bg-void</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#2C1810;"></div><div class="swatch-info"><div class="swatch-name">Darkest</div><div class="swatch-hex">#2C1810</div><div class="swatch-class">bg-darkest</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#3D1F10;"></div><div class="swatch-info"><div class="swatch-name">Dark</div><div class="swatch-hex">#3D1F10</div><div class="swatch-class">bg-dark</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#4A2515;"></div><div class="swatch-info"><div class="swatch-name">Rich</div><div class="swatch-hex">#4A2515</div><div class="swatch-class">bg-rich</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#7B4A2D;"></div><div class="swatch-info"><div class="swatch-name">Mid</div><div class="swatch-hex">#7B4A2D</div><div class="swatch-class">bg-mid</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#8B5E3C;"></div><div class="swatch-info"><div class="swatch-name">Milk</div><div class="swatch-hex">#8B5E3C</div><div class="swatch-class">bg-milk</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#C68642;"></div><div class="swatch-info"><div class="swatch-name">Caramel</div><div class="swatch-hex">#C68642</div><div class="swatch-class">bg-caramel</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#D4924A;"></div><div class="swatch-info"><div class="swatch-name">Gold</div><div class="swatch-hex">#D4924A</div><div class="swatch-class">bg-gold</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#E8D5B7;"></div><div class="swatch-info"><div class="swatch-name">Cream</div><div class="swatch-hex">#E8D5B7</div><div class="swatch-class">bg-cream</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#F5E6D3;"></div><div class="swatch-info"><div class="swatch-name">Latte</div><div class="swatch-hex">#F5E6D3</div><div class="swatch-class">bg-latte</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#FFF8F0;"></div><div class="swatch-info"><div class="swatch-name">Light</div><div class="swatch-hex">#FFF8F0</div><div class="swatch-class">text-light</div></div></div>
+                <div class="swatch"><div class="swatch-color" style="background:#A0785A;"></div><div class="swatch-info"><div class="swatch-name">Muted</div><div class="swatch-hex">#A0785A</div><div class="swatch-class">text-muted</div></div></div>
+              </div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-cmt">/* Background */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-bg-caramel"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-cmt">/* Text */</span>
+<span class="c-tag">&lt;p</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-text-caramel"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/p&gt;</span>
+
+<span class="c-cmt">/* Gradients */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-bg-gradient"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-bg-gradient-warm"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-bg-gradient-gold"</span><span class="c-tag">&gt;</span><span class="c-txt">...</span><span class="c-tag">&lt;/div&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/public/docs-shell.js"></script>
+</body>
+</html>

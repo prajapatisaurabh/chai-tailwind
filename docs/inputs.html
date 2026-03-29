@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inputs &amp; Forms — Chai Choco</title>
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+  <link rel="stylesheet" href="/public/docs-layout.css" />
+</head>
+<body>
+
+<div class="page-layout" id="page-layout">
+  <main class="main" id="main">
+    <div class="main-inner">
+
+      <div class="doc-section">
+        <div class="doc-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10"/></svg>
+          Inputs &amp; Forms
+        </div>
+        <div class="doc-section-desc">Dark and cream input variants with focus ring. Include the label utility for consistent form layout.</div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Dark Input</div>
+          <div class="comp-item">
+            <div class="comp-preview col" style="max-width:400px;margin:0 auto;">
+              <label class="chai-choco-label" for="demo-dark">Email address</label>
+              <input class="chai-choco-input" id="demo-dark" type="email" placeholder="you@example.com" />
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;label</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-label"</span> <span class="c-attr">for=</span><span class="c-val">"email"</span><span class="c-tag">&gt;</span><span class="c-txt">Email address</span><span class="c-tag">&lt;/label&gt;</span>
+<span class="c-tag">&lt;input</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-input"</span> <span class="c-attr">id=</span><span class="c-val">"email"</span> <span class="c-attr">type=</span><span class="c-val">"email"</span>
+       <span class="c-attr">placeholder=</span><span class="c-val">"you@example.com"</span> <span class="c-tag">/&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Cream Input</div>
+          <div class="comp-item">
+            <div class="comp-preview cream-bg col" style="max-width:400px;margin:0 auto;">
+              <label class="chai-choco-label" for="demo-cream" style="color:#7B4A2D;">Name</label>
+              <input class="chai-choco-input-cream" id="demo-cream" type="text" placeholder="Your name" />
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;label</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-label"</span> <span class="c-attr">for=</span><span class="c-val">"name"</span><span class="c-tag">&gt;</span><span class="c-txt">Name</span><span class="c-tag">&lt;/label&gt;</span>
+<span class="c-tag">&lt;input</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-input-cream"</span> <span class="c-attr">id=</span><span class="c-val">"name"</span> <span class="c-attr">type=</span><span class="c-val">"text"</span>
+       <span class="c-attr">placeholder=</span><span class="c-val">"Your name"</span> <span class="c-tag">/&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/public/docs-shell.js"></script>
+</body>
+</html>

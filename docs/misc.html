@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avatar &amp; Divider — Chai Choco</title>
+  <link rel="icon" type="image/png" href="/public/favicon_io/favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/public/shared.css" />
+  <link rel="stylesheet" href="/public/docs-layout.css" />
+</head>
+<body>
+
+<div class="page-layout" id="page-layout">
+  <main class="main" id="main">
+    <div class="main-inner">
+
+      <div class="doc-section">
+        <div class="doc-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          Avatar &amp; Divider
+        </div>
+        <div class="doc-section-desc">Circular avatar for user initials or images, and a styled horizontal divider.</div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Avatar</div>
+          <div class="comp-item">
+            <div class="comp-preview" style="gap:12px;">
+              <div class="chai-choco-avatar">SC</div>
+              <div class="chai-choco-avatar">AB</div>
+              <div class="chai-choco-avatar">MK</div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;div</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-avatar"</span><span class="c-tag">&gt;</span><span class="c-txt">SC</span><span class="c-tag">&lt;/div&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-group">
+          <div class="comp-group-label">Divider</div>
+          <div class="comp-item">
+            <div class="comp-preview col" style="gap:8px;">
+              <div style="font-size:13px;color:var(--muted);">Content above</div>
+              <hr class="chai-choco-divider" style="width:100%;" />
+              <div style="font-size:13px;color:var(--muted);">Content below</div>
+            </div>
+            <div class="comp-code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+              <pre class="comp-code"><span class="c-tag">&lt;hr</span> <span class="c-attr">class=</span><span class="c-val">"chai-choco-divider"</span> <span class="c-tag">/&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/src/index.js"></script>
+<script src="/public/docs-shell.js"></script>
+</body>
+</html>
